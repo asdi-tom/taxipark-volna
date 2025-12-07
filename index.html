@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Таксопарк «Волна» — работа в Яндекс.Такси с комиссией от 2%</title>
+    
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105719635', 'ym');
+
+        ym(105719635, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/105719635" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Гибридная цветовая палитра: Яндекс + финансовые акценты */
@@ -707,7 +722,7 @@
             </div>
             
             <div class="cta-buttons">
-                <a href="#registration" class="btn btn-primary">⚡️ НАЧАТЬ РЕГИСТРАЦИЮ</a>
+                <a href="#registration" class="btn btn-primary" id="heroRegBtn">⚡️ НАЧАТЬ РЕГИСТРАЦИЮ</a>
             </div>
         </div>
         
@@ -775,6 +790,7 @@
                     <p>Заполните короткую форму Яндекс — получите доступ к следующим шагам.</p>
                     <a href="https://forms.fleet.yandex.ru/forms?specification=taxi&ref_id=79483c712f4649a4b6b36851c50cbfe6" 
                        class="btn btn-primary btn-small" 
+                       id="step1RegBtn"
                        target="_blank"
                        style="margin-top: 10px;">
                         📝 Заполнить форму
@@ -792,10 +808,10 @@
                         <div class="app-group">
                             <div class="app-group-title">Яндекс Про (работа):</div>
                             <div class="app-group-buttons">
-                                <a href="https://play.google.com/store/apps/details?id=ru.yandex.taximeter" class="btn btn-app btn-small" target="_blank">
+                                <a href="https://play.google.com/store/apps/details?id=ru.yandex.taximeter" class="btn btn-app btn-small" id="yandexAndroidBtn" target="_blank">
                                     <i class="fab fa-android"></i> Android
                                 </a>
-                                <a href="https://apps.apple.com/ru/app/yandex-pro/id1253507990" class="btn btn-app btn-small" target="_blank">
+                                <a href="https://apps.apple.com/ru/app/yandex-pro/id1253507990" class="btn btn-app btn-small" id="yandexIosBtn" target="_blank">
                                     <i class="fab fa-apple"></i> iPhone
                                 </a>
                             </div>
@@ -804,10 +820,10 @@
                         <div class="app-group">
                             <div class="app-group-title">Jump Taxi (выплаты):</div>
                             <div class="app-group-buttons">
-                                <a href="https://play.google.com/store/apps/details?id=cards.baranka" class="btn btn-app btn-small" target="_blank">
+                                <a href="https://play.google.com/store/apps/details?id=cards.baranka" class="btn btn-app btn-small" id="jumpAndroidBtn" target="_blank">
                                     <i class="fab fa-android"></i> Android
                                 </a>
-                                <a href="https://apps.apple.com/ru/app/jump-taxi/id1504305203" class="btn btn-app btn-small" target="_blank">
+                                <a href="https://apps.apple.com/ru/app/jump-taxi/id1504305203" class="btn btn-app btn-small" id="jumpIosBtn" target="_blank">
                                     <i class="fab fa-apple"></i> iPhone
                                 </a>
                             </div>
@@ -849,7 +865,7 @@
                         <div class="bot-message">💳 Настроить способ оплаты</div>
                         <div class="bot-message">⚙️ Персональные настройки</div>
                     </div>
-                    <a href="https://t.me/TaxiVIPhelpBot" class="btn btn-telegram" target="_blank">
+                    <a href="https://t.me/TaxiVIPhelpBot" class="btn btn-telegram" id="telegramBotBtn" target="_blank">
                         <i class="fab fa-telegram"></i> Открыть бота @TaxiVIPhelpBot
                     </a>
                 </div>
@@ -881,6 +897,7 @@
                 
                 <a href="https://forms.fleet.yandex.ru/forms?specification=taxi&ref_id=79483c712f4649a4b6b36851c50cbfe6" 
                    class="btn btn-primary" 
+                   id="mainRegBtn"
                    style="width: 100%; padding: 18px; font-size: 1.2rem; margin-bottom: 15px;"
                    target="_blank">
                     🚗 ПЕРЕЙТИ К РЕГИСТРАЦИИ
@@ -954,7 +971,7 @@
                     <h3>Управление через бота</h3>
                     <p>Telegram-бот: <strong>@TaxiVIPhelpBot</strong></p>
                     <p>Смена авто, способа оплаты</p>
-                    <a href="https://t.me/TaxiVIPhelpBot" class="btn btn-telegram btn-small" target="_blank" style="margin-top: 10px;">
+                    <a href="https://t.me/TaxiVIPhelpBot" class="btn btn-telegram btn-small" id="footerTelegramBtn" target="_blank" style="margin-top: 10px;">
                         <i class="fab fa-telegram"></i> Открыть бота
                     </a>
                 </div>
@@ -967,10 +984,10 @@
                     <p>Приложение <strong>«Jump Taxi»</strong></p>
                     <p>Вывод на карту 24/7</p>
                     <div style="margin-top: 10px;">
-                        <a href="https://play.google.com/store/apps/details?id=cards.baranka" class="btn btn-app btn-small" target="_blank">
+                        <a href="https://play.google.com/store/apps/details?id=cards.baranka" class="btn btn-app btn-small" id="footerJumpAndroidBtn" target="_blank">
                             <i class="fab fa-android"></i>
                         </a>
-                        <a href="https://apps.apple.com/ru/app/jump-taxi/id1504305203" class="btn btn-app btn-small" target="_blank">
+                        <a href="https://apps.apple.com/ru/app/jump-taxi/id1504305203" class="btn btn-app btn-small" id="footerJumpIosBtn" target="_blank">
                             <i class="fab fa-apple"></i>
                         </a>
                     </div>
@@ -983,7 +1000,7 @@
                     <h3>Поддержка</h3>
                     <p>WhatsApp: <strong>+7 (929) 265-27-79</strong></p>
                     <p>Только по вашей инициативе</p>
-                    <a href="https://wa.me/79292652779" class="btn btn-whatsapp btn-small" target="_blank" style="margin-top: 10px;">
+                    <a href="https://wa.me/79292652779" class="btn btn-whatsapp btn-small" id="whatsappBtn" target="_blank" style="margin-top: 10px;">
                         <i class="fab fa-whatsapp"></i> Написать
                     </a>
                 </div>
@@ -995,24 +1012,25 @@
     <footer>
         <div class="container">
             <div class="footer-links">
-                <a href="#advantages">Преимущества</a>
-                <a href="#steps">Как начать</a>
-                <a href="#bot">Управление</a>
-                <a href="#registration">Регистрация</a>
-                <a href="#faq">Вопросы</a>
+                <a href="#advantages" id="footerAdvantagesLink">Преимущества</a>
+                <a href="#steps" id="footerStepsLink">Как начать</a>
+                <a href="#bot" id="footerBotLink">Управление</a>
+                <a href="#registration" id="footerRegLink">Регистрация</a>
+                <a href="#faq" id="footerFaqLink">Вопросы</a>
             </div>
             
             <div style="margin: 15px 0;">
-                <a href="https://t.me/TaxiVIPhelpBot" class="btn btn-telegram btn-small" target="_blank" style="margin: 3px;">
+                <a href="https://t.me/TaxiVIPhelpBot" class="btn btn-telegram btn-small" id="footerTelegramSmallBtn" target="_blank" style="margin: 3px;">
                     <i class="fab fa-telegram"></i> Бот
                 </a>
                 <a href="https://forms.fleet.yandex.ru/forms?specification=taxi&ref_id=79483c712f4649a4b6b36851c50cbfe6" 
                    class="btn btn-primary btn-small" 
+                   id="footerRegSmallBtn"
                    target="_blank"
                    style="margin: 3px;">
                     ⚡️ Регистрация
                 </a>
-                <a href="https://wa.me/79292652779" class="btn btn-whatsapp btn-small" target="_blank" style="margin: 3px;">
+                <a href="https://wa.me/79292652779" class="btn btn-whatsapp btn-small" id="footerWhatsappBtn" target="_blank" style="margin: 3px;">
                     <i class="fab fa-whatsapp"></i> Поддержка
                 </a>
             </div>
@@ -1102,15 +1120,172 @@
                 }
             });
             
-            // Обработчик для скрытия кнопки при клике (опционально)
-            floatingBtn.addEventListener('click', function() {
-                // Можно добавить отслеживание кликов в аналитику
-                console.log('Клик по плавающей кнопке');
-            });
-            
             // Инициализация: скрываем кнопку при загрузке
             floatingBtn.classList.remove('visible');
         });
+
+        // ОТСЛЕЖИВАНИЕ ДЕЙСТВИЙ ДЛЯ ЯНДЕКС.МЕТРИКИ
+        document.addEventListener('DOMContentLoaded', function() {
+            // Функция для отправки целей
+            function trackGoal(goalName) {
+                if (typeof ym !== 'undefined') {
+                    ym(105719635, 'reachGoal', goalName);
+                    console.log('Цель отправлена: ' + goalName);
+                }
+            }
+
+            // 1. ОСНОВНЫЕ КНОПКИ РЕГИСТРАЦИИ
+            const regButtons = [
+                { id: 'heroRegBtn', goal: 'hero_registration_button' },
+                { id: 'step1RegBtn', goal: 'step1_registration_button' },
+                { id: 'mainRegBtn', goal: 'main_registration_button' },
+                { id: 'floatingBtn', goal: 'floating_registration_button' },
+                { id: 'footerRegSmallBtn', goal: 'footer_registration_button' }
+            ];
+
+            regButtons.forEach(button => {
+                const element = document.getElementById(button.id);
+                if (element) {
+                    element.addEventListener('click', function() {
+                        trackGoal(button.goal);
+                    });
+                }
+            });
+
+            // 2. TELEGRAM БОТ
+            const telegramButtons = [
+                { id: 'telegramBotBtn', goal: 'telegram_bot_main' },
+                { id: 'footerTelegramBtn', goal: 'telegram_bot_contacts' },
+                { id: 'footerTelegramSmallBtn', goal: 'telegram_bot_footer' }
+            ];
+
+            telegramButtons.forEach(button => {
+                const element = document.getElementById(button.id);
+                if (element) {
+                    element.addEventListener('click', function() {
+                        trackGoal(button.goal);
+                    });
+                }
+            });
+
+            // 3. WHATSAPP
+            const whatsappButtons = [
+                { id: 'whatsappBtn', goal: 'whatsapp_contacts' },
+                { id: 'footerWhatsappBtn', goal: 'whatsapp_footer' }
+            ];
+
+            whatsappButtons.forEach(button => {
+                const element = document.getElementById(button.id);
+                if (element) {
+                    element.addEventListener('click', function() {
+                        trackGoal(button.goal);
+                    });
+                }
+            });
+
+            // 4. ПРИЛОЖЕНИЯ
+            // Яндекс Про
+            const yandexAndroidBtn = document.getElementById('yandexAndroidBtn');
+            if (yandexAndroidBtn) {
+                yandexAndroidBtn.addEventListener('click', function() {
+                    trackGoal('yandex_pro_android');
+                });
+            }
+
+            const yandexIosBtn = document.getElementById('yandexIosBtn');
+            if (yandexIosBtn) {
+                yandexIosBtn.addEventListener('click', function() {
+                    trackGoal('yandex_pro_ios');
+                });
+            }
+
+            // Jump Taxi
+            const jumpAndroidBtn = document.getElementById('jumpAndroidBtn');
+            if (jumpAndroidBtn) {
+                jumpAndroidBtn.addEventListener('click', function() {
+                    trackGoal('jump_taxi_android');
+                });
+            }
+
+            const jumpIosBtn = document.getElementById('jumpIosBtn');
+            if (jumpIosBtn) {
+                jumpIosBtn.addEventListener('click', function() {
+                    trackGoal('jump_taxi_ios');
+                });
+            }
+
+            const footerJumpAndroidBtn = document.getElementById('footerJumpAndroidBtn');
+            if (footerJumpAndroidBtn) {
+                footerJumpAndroidBtn.addEventListener('click', function() {
+                    trackGoal('jump_taxi_android_footer');
+                });
+            }
+
+            const footerJumpIosBtn = document.getElementById('footerJumpIosBtn');
+            if (footerJumpIosBtn) {
+                footerJumpIosBtn.addEventListener('click', function() {
+                    trackGoal('jump_taxi_ios_footer');
+                });
+            }
+
+            // 5. НАВИГАЦИЯ
+            const navLinks = [
+                { id: 'footerAdvantagesLink', goal: 'nav_advantages' },
+                { id: 'footerStepsLink', goal: 'nav_steps' },
+                { id: 'footerBotLink', goal: 'nav_bot' },
+                { id: 'footerRegLink', goal: 'nav_registration' },
+                { id: 'footerFaqLink', goal: 'nav_faq' }
+            ];
+
+            navLinks.forEach(link => {
+                const element = document.getElementById(link.id);
+                if (element) {
+                    element.addEventListener('click', function() {
+                        trackGoal(link.goal);
+                    });
+                }
+            });
+
+            // 6. ВРЕМЯ НА САЙТЕ (отправляем через 30 секунд)
+            setTimeout(function() {
+                trackGoal('30_seconds_on_site');
+            }, 30000);
+
+            // 7. СКРОЛЛИНГ (отправляем, когда пользователь доскроллил до определенных секций)
+            const sections = {
+                advantages: { element: document.getElementById('advantages'), tracked: false },
+                steps: { element: document.getElementById('steps'), tracked: false },
+                bot: { element: document.getElementById('bot'), tracked: false },
+                registration: { element: document.getElementById('registration'), tracked: false },
+                faq: { element: document.getElementById('faq'), tracked: false }
+            };
+
+            window.addEventListener('scroll', function() {
+                Object.keys(sections).forEach(key => {
+                    const section = sections[key];
+                    if (section.element && !section.tracked) {
+                        const rect = section.element.getBoundingClientRect();
+                        if (rect.top < window.innerHeight && rect.bottom > 0) {
+                            trackGoal('viewed_section_' + key);
+                            section.tracked = true;
+                        }
+                    }
+                });
+            });
+
+            // 8. ОТСЛЕЖИВАНИЕ ОТКРЫТИЙ FAQ
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach((question, index) => {
+                question.addEventListener('click', function() {
+                    const isOpening = !document.querySelectorAll('.faq-answer')[index].classList.contains('active');
+                    if (isOpening) {
+                        trackGoal('faq_opened_' + (index + 1));
+                    }
+                });
+            });
+
+            console.log('Система отслеживания Яндекс.Метрики активирована');
+        });
     </script>
 </body>
-                    </html>
+                        </html>
