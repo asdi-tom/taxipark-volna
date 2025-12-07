@@ -92,13 +92,16 @@
         
         .btn-secondary {
             background-color: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
+            color: white;
+            border: 3px solid white; /* Увеличена толщина и изменен цвет границы */
+            font-weight: 700;
         }
         
         .btn-secondary:hover {
-            background-color: var(--primary-blue);
-            color: white;
+            background-color: white;
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
         }
         
         .btn-small {
@@ -128,6 +131,32 @@
         .btn-app i {
             margin-right: 8px;
             font-size: 1.2rem;
+        }
+        
+        .app-buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .app-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .app-group-title {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        
+        .app-group-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         /* Шапка */
@@ -360,43 +389,19 @@
             font-size: 1.2rem;
         }
         
-        /* Форма регистрации */
-        .registration-form {
+        /* Форма регистрации - ЗАМЕНЕНА на кнопку */
+        .registration {
             background-color: white;
+            text-align: center;
+        }
+        
+        .registration-box {
             max-width: 600px;
             margin: 0 auto;
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-        
-        .form-checkbox {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        
-        .form-checkbox input {
-            margin-right: 10px;
-            margin-top: 5px;
+            background-color: var(--light-gray);
         }
         
         /* FAQ */
@@ -554,7 +559,7 @@
                 min-width: 100%;
             }
             
-            .registration-form {
+            .registration-box {
                 padding: 30px 20px;
             }
             
@@ -600,7 +605,8 @@
             
             <div class="cta-buttons">
                 <a href="#registration" class="btn btn-primary">⚡️ НАЧАТЬ РЕГИСТРАЦИЮ СЕЙЧАС</a>
-                <a href="#bot" class="btn btn-secondary">👀 Управление через бота</a>
+                <!-- Исправленная кнопка - стала контрастнее -->
+                <a href="#bot" class="btn btn-secondary">👀 УПРАВЛЕНИЕ ЧЕРЕЗ БОТА</a>
             </div>
         </div>
     </section>
@@ -664,7 +670,7 @@
                         <i class="fas fa-edit"></i>
                     </div>
                     <h3>Форма на сайте (1 минута)</h3>
-                    <p>Нажмите кнопку ниже, заполните поля (Имя, Телефон). Мгновенно получите SMS со ссылками и дальнейшими инструкциями.</p>
+                    <p>Нажмите кнопку ниже, заполните короткую форму Яндекс — и получите доступ к следующим шагам. Все автоматически.</p>
                 </div>
                 
                 <div class="step">
@@ -673,14 +679,33 @@
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <h3>Установка приложений (2 минуты)</h3>
-                    <p>По полученным ссылкам установите «Яндекс Про» (для работы) и «Jump Taxi» (для выплат).</p>
-                    <div style="margin-top: 15px;">
-                        <a href="https://play.google.com/store/apps/details?id=cards.baranka" class="btn btn-app btn-small" target="_blank">
-                            <i class="fab fa-android"></i> Android
-                        </a>
-                        <a href="https://apps.apple.com/ru/app/jump-taxi/id1504305203" class="btn btn-app btn-small" target="_blank">
-                            <i class="fab fa-apple"></i> iPhone
-                        </a>
+                    <p>Установите два приложения: «Яндекс Про» для работы и «Jump Taxi» для выплат.</p>
+                    
+                    <!-- Обновленный блок с четким разделением ссылок -->
+                    <div class="app-buttons-container">
+                        <div class="app-group">
+                            <div class="app-group-title">Яндекс Про (для работы):</div>
+                            <div class="app-group-buttons">
+                                <a href="https://play.google.com/store/apps/details?id=ru.yandex.taximeter" class="btn btn-app btn-small" target="_blank">
+                                    <i class="fab fa-android"></i> Android
+                                </a>
+                                <a href="https://apps.apple.com/ru/app/yandex-pro/id1253507990" class="btn btn-app btn-small" target="_blank">
+                                    <i class="fab fa-apple"></i> iPhone
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="app-group">
+                            <div class="app-group-title">Jump Taxi (для выплат):</div>
+                            <div class="app-group-buttons">
+                                <a href="https://play.google.com/store/apps/details?id=cards.baranka" class="btn btn-app btn-small" target="_blank">
+                                    <i class="fab fa-android"></i> Android
+                                </a>
+                                <a href="https://apps.apple.com/ru/app/jump-taxi/id1504305203" class="btn btn-app btn-small" target="_blank">
+                                    <i class="fab fa-apple"></i> iPhone
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -704,7 +729,7 @@
             </div>
             
             <div style="text-align: center; margin-top: 40px;">
-                <a href="#registration" class="btn btn-primary">🚀 ПЕРЕЙТИ К ФОРМЕ РЕГИСТРАЦИИ</a>
+                <a href="#registration" class="btn btn-primary">🚀 ПЕРЕЙТИ К РЕГИСТРАЦИИ</a>
             </div>
         </div>
     </section>
@@ -722,7 +747,7 @@
                         <p>Выберите действие:</p>
                         <p>🚗 Сменить автомобиль</p>
                         <p>💳 Настроить способ оплаты</p>
-                        <p>📊 Информация о тарифах</p>
+                        <p>⚙️ Персональные настройки</p>
                         <p>❓ Помощь и поддержка</p>
                     </div>
                     <a href="https://t.me/TaxiVIPhelpBot" class="btn btn-telegram" target="_blank">
@@ -736,9 +761,9 @@
                     <p>Это ваш личный кабинет в мессенджере, где вы можете:</p>
                     
                     <ul class="bot-features">
+                        <!-- Убран пункт "Уточнить информацию" -->
                         <li><i class="fas fa-car"></i> <strong>Сменить автомобиль</strong> — Добавить другую машину или временно работать на авто друга. Без обращения в поддержку.</li>
                         <li><i class="fas fa-credit-card"></i> <strong>Выбрать способ оплаты</strong> — Решайте сами, принимать заказ только по безналу, только за наличные или все способы. Меняйте настройку за секунду.</li>
-                        <li><i class="fas fa-chart-line"></i> <strong>Уточнить информацию</strong> — Быстро получить справку по тарифам, комиссии или любым другим вопросам.</li>
                         <li><i class="fas fa-cogs"></i> <strong>Персональные настройки</strong> — Настройте работу под свои предпочтения без звонков менеджерам.</li>
                     </ul>
                     
@@ -748,47 +773,33 @@
         </div>
     </section>
 
-    <!-- Форма регистрации -->
+    <!-- Регистрация (заменена на кнопку-ссылку) -->
     <section id="registration" class="registration">
         <div class="container">
             <h2>Регистрация в таксопарк «Волна»</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">Заполните поля — и через 5 минут вы получите доступ к системе. Это не звонок менеджера, а автоматическое SMS с данными для входа.</p>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">Нажмите кнопку ниже — и вы перейдете на официальную форму Яндекс для регистрации. Заполните её, и через 5 минут вы получите доступ к системе.</p>
             
-            <div class="registration-form">
-                <form id="registrationForm">
-                    <div class="form-group">
-                        <label for="name">Ваше имя *</label>
-                        <input type="text" id="name" name="name" required placeholder="Иван Иванов">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Номер телефона *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="car">Марка и модель автомобиля (необязательно)</label>
-                        <input type="text" id="car" name="car" placeholder="Kia Rio">
-                    </div>
-                    
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="agreement" name="agreement" required>
-                        <label for="agreement">Я согласен с условиями подключения и политикой обработки данных</label>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px; font-size: 1.2rem;">
-                        ✅ ПОЛУЧИТЬ ИНСТРУКЦИЮ НА ТЕЛЕФОН
-                    </button>
-                </form>
+            <div class="registration-box">
+                <h3 style="color: var(--primary-green); margin-bottom: 30px;">✅ Регистрация занимает 1 минуту</h3>
                 
-                <p style="margin-top: 20px; font-size: 0.9rem; text-align: center; color: #666;">
-                    <strong>Важно:</strong> Нажимая кнопку, вы не заказываете звонок. Вам на номер придет SMS с четким алгоритмом действий.
+                <p style="margin-bottom: 30px;">Нажмите кнопку, заполните короткую форму на сайте Яндекс — и сразу получите дальнейшие инструкции на телефон.</p>
+                
+                <!-- Основная кнопка регистрации, ведущая на внешнюю форму -->
+                <a href="https://forms.fleet.yandex.ru/forms?specification=taxi&ref_id=79483c712f4649a4b6b36851c50cbfe6" 
+                   class="btn btn-primary" 
+                   style="width: 100%; padding: 20px; font-size: 1.3rem; margin-bottom: 20px;"
+                   target="_blank">
+                    🚗 ПЕРЕЙТИ К ФОРМЕ РЕГИСТРАЦИИ НА ЯНДЕКС
+                </a>
+                
+                <p style="font-size: 0.9rem; color: #666;">
+                    <strong>Важно:</strong> Вы перейдете на официальную страницу Яндекс. Таксопарк «Волна» уже выбран в системе. Заполните данные — и получите доступ.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ (исправленный) -->
     <section id="faq" class="faq">
         <div class="container">
             <h2>Частые вопросы</h2>
@@ -799,12 +810,22 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p><strong>Нет.</strong> Регистрация полностью автоматическая. После формы вы сразу получаете SMS/сообщение с дальнейшими шагами для самостоятельного подключения.</p>
+                        <p><strong>Нет.</strong> Регистрация полностью автоматическая. После формы вы сразу получите SMS/сообщение с дальнейшими шагами для самостоятельного подключения.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(1)">
+                        <span>Как настроить работу только по безналичному расчету?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>В Telegram-боте <strong>@TaxiVIPhelpBot</strong> есть пункт «Способ оплаты». Выберите «Безналичный расчет», и система будет присылать вам соответствующие заказы. Чтобы снова принимать все заказы (и наличные, и безнал), просто переключите настройку обратно.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(2)">
                         <span>Как сменить машину, если я поехал на другой?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
@@ -813,28 +834,10 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(2)">
-                        <span>Я хочу сегодня работать только за наличные. Как это настроить?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>В том же <strong>Telegram-боте @TaxiVIPhelpBot</strong> есть пункт «Способ оплаты». Выберите «Наличный расчет», и система будет присылать вам соответствующие заказы. Завтра сможете так же легко переключиться обратно на безнал.</p>
-                    </div>
-                </div>
+                <!-- Вопрос "Что делать, если я заполнил форму..." УДАЛЕН -->
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(3)">
-                        <span>Что делать, если я заполнил форму, но не получил инструкцию?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Проверьте спам в SMS. Если сообщения нет, напишите нам в WhatsApp — <strong>только в этом случае</strong>. Мы проверим систему и вышлем инструкцию вручную.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(4)">
                         <span>Как происходит вывод денег?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
@@ -859,7 +862,7 @@
                     </div>
                     <h3>Управление через бота</h3>
                     <p>Telegram-бот: <strong>@TaxiVIPhelpBot</strong></p>
-                    <p>Смена авто, способа оплаты, справка.</p>
+                    <p>Смена авто, способа оплаты, настройки.</p>
                     <a href="https://t.me/TaxiVIPhelpBot" class="btn btn-telegram btn-small" target="_blank" style="margin-top: 15px;">
                         <i class="fab fa-telegram"></i> Открыть бота
                     </a>
@@ -916,7 +919,11 @@
                 <a href="https://t.me/TaxiVIPhelpBot" class="btn btn-telegram btn-small" target="_blank" style="margin: 5px;">
                     <i class="fab fa-telegram"></i> Бот @TaxiVIPhelpBot
                 </a>
-                <a href="#registration" class="btn btn-primary btn-small" style="margin: 5px;">
+                <!-- Обновленная ссылка для регистрации -->
+                <a href="https://forms.fleet.yandex.ru/forms?specification=taxi&ref_id=79483c712f4649a4b6b36851c50cbfe6" 
+                   class="btn btn-primary btn-small" 
+                   target="_blank"
+                   style="margin: 5px;">
                     ⚡️ Форма регистрации
                 </a>
                 <a href="https://wa.me/79292652779" class="btn btn-whatsapp btn-small" target="_blank" style="margin: 5px;">
@@ -959,28 +966,6 @@
                 faqIcon.classList.add('fa-chevron-down');
             }
         }
-        
-        // Обработка формы регистрации
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Получаем данные из формы
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const car = document.getElementById('car').value;
-            
-            // Здесь должна быть логика отправки данных на сервер
-            // Например, с помощью fetch или AJAX
-            
-            // Вместо реальной отправки покажем сообщение
-            alert(`Спасибо, ${name}! Ваша заявка принята.\n\nНа номер ${phone} будет отправлено SMS с инструкцией.\n\nАвтоматическая регистрация начата!`);
-            
-            // Очищаем форму
-            document.getElementById('registrationForm').reset();
-            
-            // Прокручиваем к началу (можно убрать, если не нужно)
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        });
         
         // Плавная прокрутка к якорям
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
