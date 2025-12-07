@@ -120,6 +120,66 @@
             font-size: 1rem;
         }
         
+        /* ПЛАВАЮЩАЯ КНОПКА */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background-color: var(--yandex-red);
+            color: white;
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 6px 25px rgba(255, 77, 77, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+            visibility: hidden;
+            border: none;
+            cursor: pointer;
+            animation: pulse 3s infinite;
+        }
+        
+        .floating-btn.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            visibility: visible;
+        }
+        
+        .floating-btn:hover {
+            background-color: #FF3333;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 77, 77, 0.6);
+        }
+        
+        .floating-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+        
+        .floating-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Анимация пульсации */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 6px 25px rgba(255, 77, 77, 0.5);
+            }
+            50% {
+                box-shadow: 0 6px 30px rgba(255, 77, 77, 0.8);
+            }
+            100% {
+                box-shadow: 0 6px 25px rgba(255, 77, 77, 0.5);
+            }
+        }
+        
         .app-buttons-container {
             display: flex;
             flex-direction: column;
@@ -584,6 +644,33 @@
             .contact-methods {
                 grid-template-columns: 1fr;
             }
+            
+            /* Плавающая кнопка на мобильных */
+            .floating-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 14px 22px;
+                font-size: 0.9rem;
+            }
+            
+            .floating-btn i {
+                margin-right: 8px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .floating-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 20px;
+                font-size: 0.85rem;
+            }
+            
+            .floating-btn i {
+                margin-right: 6px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -937,6 +1024,14 @@
         </div>
     </footer>
 
+    <!-- ПЛАВАЮЩАЯ КНОПКА -->
+    <a href="https://forms.fleet.yandex.ru/forms?specification=taxi&ref_id=79483c712f4649a4b6b36851c50cbfe6" 
+       id="floatingBtn" 
+       class="floating-btn" 
+       target="_blank">
+        <i class="fas fa-car"></i> ПОДКЛЮЧИТЬСЯ
+    </a>
+
     <script>
         // Мобильное меню
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
@@ -983,6 +1078,39 @@
                 }
             });
         });
+        
+        // Управление плавающей кнопкой
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingBtn = document.getElementById('floatingBtn');
+            const footer = document.querySelector('footer');
+            
+            // Показываем кнопку после скролла на 300px
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    // Проверяем, не доскроллили ли до футера
+                    const footerPosition = footer.getBoundingClientRect();
+                    const viewportHeight = window.innerHeight;
+                    
+                    // Если футер виден менее чем на 20%, показываем кнопку
+                    if (footerPosition.top > viewportHeight * 0.8) {
+                        floatingBtn.classList.add('visible');
+                    } else {
+                        floatingBtn.classList.remove('visible');
+                    }
+                } else {
+                    floatingBtn.classList.remove('visible');
+                }
+            });
+            
+            // Обработчик для скрытия кнопки при клике (опционально)
+            floatingBtn.addEventListener('click', function() {
+                // Можно добавить отслеживание кликов в аналитику
+                console.log('Клик по плавающей кнопке');
+            });
+            
+            // Инициализация: скрываем кнопку при загрузке
+            floatingBtn.classList.remove('visible');
+        });
     </script>
 </body>
-</html>
+                    </html>
