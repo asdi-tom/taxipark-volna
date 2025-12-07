@@ -1287,5 +1287,109 @@
             console.log('Система отслеживания Яндекс.Метрики активирована');
         });
     </script>
+    <!-- Telegram уведомления о посетителях -->
+<script>
+(function() {
+    // === НАСТРОЙКИ ===
+    const CONFIG = {
+        TELEGRAM_BOT_TOKEN: '7972335722:AAGRVHFzWSom6sIfz4JxwqPeIMX30cswxyk', // Ваш токен
+        TELEGRAM_CHAT_ID: '687385478', // Ваш Chat ID
+        ENABLED: true, // Включить уведомления
+        MIN_TIME_SECONDS: 10, // Ждать 10 секунд перед отправкой
+        TRACK_RETURNING: false, // Не отслеживать возвращения
+        IGNORE_REFRESH: true // Игнорировать обновления страницы
+    };
+    
+    if (!CONFIG.ENABLED) return;
+    
+    // Функция для определения источника трафика
+    function getTrafficSource() {
+        const referrer = document.referrer;
+        if (!referrer) return 'Прямой заход';
+        
+        if (referrer.includes('google')) return 'Google';
+        if (referrer.includes('yandex')) return 'Яндекс';
+        if (referrer.includes('vk.com')) return 'ВКонтакте';
+        if (referrer.includes('telegram')) return 'Telegram';
+        if (referrer.includes('whatsapp')) return 'WhatsApp';
+        return 'Другой сайт';
+    }
+    
+    // Отправка в Telegram
+    function sendToTelegram(message) {
+        const url = `https://api.telegram.org/bot${CONFIG.TELEGRAM_BOT_TOKEN}/sendMessage`;
+        const payload = {
+            chat_id: CONFIG.TELEGRAM_CHAT_ID,
+            text: message,
+            parse_mode: 'HTML',
+            disable_web_page_preview: true
+        };
+        
+        fetch(url, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                console.log('✅ Уведомление отправлено в Telegram');
+                // Сохраняем время отправки
+                localStorage.setItem('volna_last_notif', new Date().toISOString());
+            }
+        })
+        .catch(err => console.error('❌ Ошибка отправки:', err));
+    }
+    
+    // Основная функция отслеживания
+    function trackVisitor() {
+        // Пропускаем ботов
+        const userAgent = navigator.userAgent.toLowerCase();
+        if (/bot|crawler|spider/i.test(userAgent)) return;
+        
+        // Проверяем, не было ли недавнего уведомления
+        const lastNotif = localStorage.getItem('volna_last_notif');
+        if (CONFIG.IGNORE_REFRESH && lastNotif) {
+            const lastTime = new Date(lastNotif);
+            const diffMinutes = (new Date() - lastTime) / (1000 * 60);
+            if (diffMinutes < 5) return; // Не отправляем если прошло <5 минут
+        }
+        
+        // Ждем минимальное время
+        setTimeout(() => {
+            if (document.hidden) return; // Если вкладка не активна
+            
+            const info = {
+                time: new Date().toLocaleString('ru-RU'),
+                page: window.location.pathname,
+                source: getTrafficSource(),
+                device: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? '📱 Мобильный' : '💻 Компьютер',
+                screen: `${window.screen.width}×${window.screen.height}`,
+                url: window.location.href
+            };
+            
+            const message = `
+<b>🚗 Новый посетитель на сайте Таксопарк «Волна»</b>
+
+⏰ <b>Время:</b> ${info.time}
+📄 <b>Страница:</b> ${info.page === '/' ? 'Главная' : info.page}
+🔗 <b>Источник:</b> ${info.source}
+📱 <b>Устройство:</b> ${info.device}
+🖥 <b>Разрешение:</b> ${info.screen}
+
+🌐 <a href="${info.url}">${info.url}</a>`;
+            
+            sendToTelegram(message);
+        }, CONFIG.MIN_TIME_SECONDS * 1000);
+    }
+    
+    // Запускаем при загрузке страницы
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', trackVisitor);
+    } else {
+        trackVisitor();
+    }
+})();
+</script>
 </body>
                         </html>
