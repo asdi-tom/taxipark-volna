@@ -296,6 +296,30 @@
             text-shadow: 0 2px 5px rgba(0, 200, 83, 0.2);
         }
         
+        .form-alternative {
+            background: #f8f9fa;
+            padding: 50px 30px;
+            border-radius: 16px;
+            border: 2px dashed #dee2e6;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .form-alternative-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .form-info-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: #fff3cd;
+            border-radius: 10px;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            text-align: left;
+        }
+        
         .yandex-form-container {
             border: 2px solid var(--border-color);
             border-radius: 12px;
@@ -1109,23 +1133,44 @@
                 </div>
             </div>
             
-            <!-- ШАГ 2: РЕГИСТРАЦИЯ -->
+            <!-- ШАГ 2: РЕГИСТРАЦИЯ (ИСПРАВЛЕННАЯ ВЕРСИЯ) -->
             <div id="step2" class="step-content">
                 <h2>Регистрация в Яндекс.Такси</h2>
                 <p>Заполните короткую форму. Таксопарк «Пегас» уже выбран автоматически.</p>
                 
-                <div class="yandex-form-container">
-                    <iframe 
-                        id="yandexFormIframe"
-                        src=""
-                        title="Форма регистрации Яндекс.Такси"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
+                <div class="form-alternative">
+                    <div class="form-alternative-icon">🚗</div>
+                    <h3 style="color: var(--yandex-black); margin-bottom: 15px;">Форма регистрации Яндекс.Такси</h3>
+                    <p style="margin-bottom: 25px; color: var(--yandex-gray); max-width: 600px; margin-left: auto; margin-right: auto;">
+                        Для безопасной регистрации форма открывается на официальном сайте Яндекс.Такси.<br>
+                        Нажмите кнопку ниже, чтобы перейти к заполнению.
+                    </p>
+                    
+                    <a 
+                        href="https://forms.fleet.yandex.ru/forms?specification=taxi&ref_id=018aedd61b874cbbba6e252f6502d71c&iframe=true&lang=ru" 
+                        target="_blank"
+                        class="btn btn-primary pulse"
+                        id="openYandexFormBtn"
+                        style="padding: 18px 40px; font-size: 1.1rem; margin-bottom: 15px;"
+                    >
+                        <i class="fas fa-external-link-alt" style="margin-right: 10px;"></i>
+                        ПЕРЕЙТИ К ФОРМЕ РЕГИСТРАЦИИ
+                    </a>
+                    
+                    <p style="color: var(--yandex-gray); font-size: 0.9rem; margin-bottom: 10px;">
+                        <i class="fas fa-lock" style="margin-right: 8px;"></i>
+                        Ваши данные защищены. Вы заполняете форму на официальном сайте Яндекс.
+                    </p>
                 </div>
                 
-                <div style="text-align: center; margin: 20px 0; color: var(--yandex-gray);">
-                    <p><i class="fas fa-lock"></i> Ваши данные защищены. Вы заполняете форму на официальном сайте Яндекс.</p>
+                <div class="form-info-box">
+                    <p style="margin: 0;">
+                        <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+                        <strong>Инструкция:</strong><br>
+                        1. Нажмите кнопку "Перейти к форме регистрации" выше<br>
+                        2. Заполните форму на сайте Яндекс.Такси<br>
+                        3. Вернитесь в эту вкладку и нажмите "Далее →"
+                    </p>
                 </div>
                 
                 <div class="onboarding-navigation">
@@ -1842,7 +1887,7 @@
         }
         
         // ============================================
-        // 8. МАСТЕР ПОДКЛЮЧЕНИЯ
+        // 8. МАСТЕР ПОДКЛЮЧЕНИЯ (ИСПРАВЛЕННАЯ ВЕРСИЯ)
         // ============================================
         
         function initOnboardingWizard() {
@@ -1855,6 +1900,7 @@
             const completeBtn = document.getElementById('completeBtn');
             const checkboxes = document.querySelectorAll('.checklist-checkbox');
             const step2NextBtn = document.getElementById('step2Next');
+            const openYandexFormBtn = document.getElementById('openYandexFormBtn');
             
             // Текущий шаг
             let currentStep = 1;
@@ -1918,39 +1964,107 @@
                 calculateIncome();
             }
             
-            // Загрузка формы Яндекса
+            // Загрузка формы Яндекса (исправленная версия)
             function loadYandexForm() {
-                const iframe = document.getElementById('yandexFormIframe');
-                if (!iframe || iframe.src !== '') return;
+                if (!openYandexFormBtn || !step2NextBtn) return;
                 
-                // URL формы Яндекс
-                const formUrl = 'https://forms.fleet.yandex.ru/forms?specification=taxi&ref_id=018aedd61b874cbbba6e252f6502d71c&iframe=true&lang=ru';
-                iframe.src = formUrl;
+                // Восстанавливаем состояние из localStorage
+                if (localStorage.getItem('yandex_form_opened') === 'true') {
+                    step2NextBtn.disabled = false;
+                    step2NextBtn.style.opacity = '1';
+                    
+                    const step2Indicator = document.querySelector('.step-indicator[data-step="2"]');
+                    if (step2Indicator) {
+                        step2Indicator.classList.add('completed');
+                    }
+                }
                 
-                // Пытаемся определить, когда форма загрузилась
-                iframe.onload = function() {
-                    console.log('Форма Яндекс загружена');
-                    if (step2NextBtn) {
+                // Обработчик клика на кнопку открытия формы
+                openYandexFormBtn.addEventListener('click', function(e) {
+                    // Открываем в новой вкладке (уже есть target="_blank")
+                    
+                    // Отправляем событие в Яндекс.Метрику
+                    if (typeof ym !== 'undefined') {
+                        ym(105719635, 'reachGoal', 'yandex_form_opened');
+                    }
+                    
+                    // Разблокируем кнопку "Далее" через 2 секунды
+                    setTimeout(() => {
                         step2NextBtn.disabled = false;
                         step2NextBtn.style.opacity = '1';
-                        localStorage.setItem('yandex_form_completed', 'true');
+                        localStorage.setItem('yandex_form_opened', 'true');
                         
                         // Помечаем шаг как выполненный
                         const step2Indicator = document.querySelector('.step-indicator[data-step="2"]');
                         if (step2Indicator) {
                             step2Indicator.classList.add('completed');
                         }
-                    }
-                };
+                        
+                        // Показываем всплывающее уведомление
+                        showNotification('Форма открыта! Заполните её и вернитесь на эту страницу.');
+                    }, 2000);
+                });
                 
-                // На всякий случай, если событие onload не сработает (CORS)
-                setTimeout(() => {
-                    if (step2NextBtn && step2NextBtn.disabled) {
-                        step2NextBtn.disabled = false;
-                        step2NextBtn.style.opacity = '1';
-                        console.log('Кнопка разблокирована по таймауту');
+                // Кнопка "Далее" также может быть разблокирована вручную
+                step2NextBtn.addEventListener('click', function() {
+                    if (!this.disabled) {
+                        localStorage.setItem('yandex_form_completed', 'true');
                     }
+                });
+            }
+            
+            // Вспомогательная функция для уведомлений
+            function showNotification(message) {
+                // Создаем элемент уведомления
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: var(--yandex-red);
+                    color: white;
+                    padding: 15px 20px;
+                    border-radius: 8px;
+                    z-index: 99999;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                    animation: slideIn 0.3s ease;
+                `;
+                
+                notification.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-check-circle"></i>
+                        <span>${message}</span>
+                    </div>
+                `;
+                
+                document.body.appendChild(notification);
+                
+                // Удаляем через 5 секунд
+                setTimeout(() => {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.parentNode.removeChild(notification);
+                        }
+                    }, 300);
                 }, 5000);
+                
+                // Добавляем CSS анимации
+                if (!document.getElementById('notification-styles')) {
+                    const style = document.createElement('style');
+                    style.id = 'notification-styles';
+                    style.textContent = `
+                        @keyframes slideIn {
+                            from { transform: translateX(100%); opacity: 0; }
+                            to { transform: translateX(0); opacity: 1; }
+                        }
+                        @keyframes slideOut {
+                            from { transform: translateX(0); opacity: 1; }
+                            to { transform: translateX(100%); opacity: 0; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
             }
             
             // Переход к шагу
@@ -1980,11 +2094,6 @@
                 const currentContent = document.getElementById(`step${step}`);
                 if (currentContent) {
                     currentContent.classList.add('active');
-                    
-                    // Загружаем форму Яндекса на шаге 2
-                    if (step === 2) {
-                        loadYandexForm();
-                    }
                     
                     // Отправляем событие в Яндекс.Метрику
                     if (typeof ym !== 'undefined') {
@@ -2079,6 +2188,7 @@
             // Инициализация
             initIncomeCalculator();
             initCheckboxes();
+            loadYandexForm(); // Инициализируем форму
             
             // Переходим к сохранённому шагу
             goToStep(currentStep);
@@ -2187,4 +2297,4 @@
         }
     </script>
 </body>
-                            </html>
+                </html>
