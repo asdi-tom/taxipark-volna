@@ -647,18 +647,24 @@
             color: var(--yandex-red);
         }
         
+        /* ИСПРАВЛЕНИЕ: Уменьшили отступы в hero-блоке */
         .hero {
             background-color: var(--yandex-black);
             color: white;
-            padding: 80px 0 120px;
+            padding: 50px 0 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
         
+        .hero h1 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
         .hero-subtitle {
             font-size: 1.2rem;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -675,7 +681,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
-            margin: 25px 0;
+            margin: 15px 0;
         }
         
         .benefit-tag {
@@ -951,7 +957,7 @@
             }
             
             .hero {
-                padding: 60px 0 100px;
+                padding: 40px 0 60px;
             }
             
             .floating-btn {
@@ -1165,7 +1171,7 @@
                 
                 <div class="onboarding-navigation">
                     <button class="btn-step prev" data-prev="2">← Назад</button>
-                    <button class="btn-step next" data-next="3">Далее →</button>
+                    <button class="btn-step next" data-next="4">Далее →</button>
                 </div>
             </div>
             
@@ -1251,7 +1257,8 @@
         <!-- Главный экран -->
         <section class="hero">
             <div class="container">
-                <h1>🚗 Работайте в Яндекс.Такси с самой низкой комиссией</h1>
+                <!-- ИСПРАВЛЕНИЕ: Убрали эмодзи-машинку из заголовка -->
+                <h1>Работайте в Яндекс.Такси с самой низкой комиссией</h1>
                 <p class="hero-subtitle">Подключайтесь за 5 минут. <span class="green-highlight">Комиссия всего 2-3%.</span> Выплаты 24/7 на любую карту. Ваше авто.</p>
                 
                 <div class="benefits-list">
@@ -1916,13 +1923,13 @@
                 const iframe = document.getElementById('yandexFormIframe');
                 if (!iframe || iframe.src !== '') return;
                 
-                // URL формы Яндекс (замените на реальный)
+                // URL формы Яндекс
                 const formUrl = 'https://forms.fleet.yandex.ru/forms?specification=taxi&ref_id=018aedd61b874cbbba6e252f6502d71c&iframe=true&lang=ru';
                 iframe.src = formUrl;
                 
-                // Симулируем отправку формы через 3 секунды (для демо)
-                // В реальном проекте нужно слушать события от iframe
-                setTimeout(() => {
+                // Пытаемся определить, когда форма загрузилась
+                iframe.onload = function() {
+                    console.log('Форма Яндекс загружена');
                     if (step2NextBtn) {
                         step2NextBtn.disabled = false;
                         step2NextBtn.style.opacity = '1';
@@ -1934,7 +1941,16 @@
                             step2Indicator.classList.add('completed');
                         }
                     }
-                }, 3000);
+                };
+                
+                // На всякий случай, если событие onload не сработает (CORS)
+                setTimeout(() => {
+                    if (step2NextBtn && step2NextBtn.disabled) {
+                        step2NextBtn.disabled = false;
+                        step2NextBtn.style.opacity = '1';
+                        console.log('Кнопка разблокирована по таймауту');
+                    }
+                }, 5000);
             }
             
             // Переход к шагу
@@ -2018,11 +2034,8 @@
             // Кнопка "Вернуться на главную"
             if (backToMainBtn) {
                 backToMainBtn.addEventListener('click', function() {
-                    if (window.history.length > 1) {
-                        window.close(); // Закрываем вкладку, если она была открыта отдельно
-                    } else {
-                        window.location.href = window.location.pathname; // Возвращаемся на главную
-                    }
+                    showMainContent();
+                    window.location.hash = '';
                     
                     if (typeof ym !== 'undefined') {
                         ym(105719635, 'reachGoal', 'onboarding_returned_to_main');
@@ -2057,12 +2070,9 @@
                     // Показываем сообщение об успехе
                     alert('🎉 Поздравляем! Вы успешно прошли регистрацию. Теперь можете начинать работать в Яндекс.Такси!');
                     
-                    // Закрываем вкладку или возвращаемся на главную
-                    if (window.history.length > 1) {
-                        window.close();
-                    } else {
-                        window.location.href = window.location.pathname;
-                    }
+                    // Возвращаемся на главную
+                    showMainContent();
+                    window.location.hash = '';
                 });
             }
             
@@ -2075,7 +2085,7 @@
         }
         
         // ============================================
-        // 9. TELEGRAM УВЕДОМЛЕНИЯ (оставлено по вашему требованию)
+        // 9. TELEGRAM УВЕДОМЛЕНИЯ
         // ============================================
         
         function initTelegramNotifications() {
@@ -2177,4 +2187,4 @@
         }
     </script>
 </body>
-                        </html>
+                            </html>
