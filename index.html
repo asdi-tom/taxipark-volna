@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Таксопарк «Пегас» — работа в Яндекс.Такси с комиссией от 2%</title>
+    <title>Таксопарк «Пегас» — работа в Яндекс.Такси с комиссией 2-3%</title>
     
     <!-- Meta-теги для SEO и соцсетей -->
-    <meta name="description" content="Подключитесь к Яндекс.Такси с комиссией от 2%. Автоматическая регистрация за 5 минут, выплаты 24/7. Средний доход водителей 85,000₽ в месяц. Управление через Telegram-бота.">
-    <meta property="og:title" content="Таксопарк «Пегас» — работа в Яндекс.Такси с комиссией от 2%">
-    <meta property="og:description" content="Подключитесь за 5 минут. Комиссия 2-3%. Выплаты 24/7. Средний доход 85,000₽ в месяц.">
+    <meta name="description" content="Подключитесь к Яндекс.Такси с комиссией 2-3%. Регистрация за 5 минут без звонков. Выплаты 24/7 на любую карту.">
+    <meta property="og:title" content="Работа в Яндекс.Такси с комиссией от 2%">
+    <meta property="og:description" content="Подключение за 5 минут. Без менеджеров. Выплаты 24/7.">
     <meta property="og:image" content="https://ваш-сайт.ru/images/og-preview.jpg">
     <meta property="og:type" content="website">
     
@@ -19,15 +19,21 @@
             m[i].l=1*new Date();
             for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105719635', 'ym');
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
 
-        ym(105719635, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+        ym(105719635, 'init', {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/105719635" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ========== ОСНОВНЫЕ СТИЛИ ========== */
         :root {
             --yandex-black: #212121;
             --yandex-red: #FF4D4D;
@@ -38,7 +44,6 @@
             --border-color: #E0E0E0;
             --gradient-red: linear-gradient(135deg, #FF4D4D 0%, #FF3333 100%);
             --gradient-green: linear-gradient(135deg, #00C853 0%, #00E676 100%);
-            --gradient-blue: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
         * {
@@ -53,7 +58,7 @@
             color: var(--yandex-black);
             background-color: var(--background);
             overflow-x: hidden;
-            position: relative;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .container {
@@ -74,7 +79,7 @@
         }
         
         h1 {
-            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             line-height: 1.2;
         }
         
@@ -88,10 +93,16 @@
             font-size: clamp(1.1rem, 2vw, 1.3rem);
         }
         
+        p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        /* ========== КНОПКИ ========== */
         .btn {
             display: inline-block;
-            padding: 14px 28px;
-            border-radius: 8px;
+            padding: 16px 32px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
@@ -99,6 +110,10 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .btn-primary {
@@ -106,519 +121,59 @@
             color: white;
             font-weight: 700;
             font-size: 1.1rem;
-            padding: 18px 40px;
+            padding: 20px 40px;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(255, 77, 77, 0.4);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
         }
         
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.05);
+            transform: translateY(-3px);
             box-shadow: 0 15px 35px rgba(255, 77, 77, 0.6);
         }
         
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 77, 77, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
-        }
-        
-        .btn-primary.pulse {
-            animation: pulse-glow 2s infinite;
-        }
-        
-        /* ========== СТИЛИ ДЛЯ МАСТЕРА ПОДКЛЮЧЕНИЯ ========== */
-        .onboarding-wizard {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            z-index: 9999;
-            overflow-y: auto;
-        }
-        
-        .onboarding-wizard.active {
-            display: block;
-        }
-        
-        .onboarding-header {
-            background: var(--yandex-black);
+        .btn-whatsapp {
+            background-color: #25D366;
             color: white;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .onboarding-header .container {
-            display: flex;
-            justify-content: space-between;
+            font-weight: 600;
+            padding: 16px 28px;
+            border-radius: 10px;
+            margin: 10px 0;
+            display: inline-flex;
             align-items: center;
+            gap: 10px;
+            text-decoration: none;
         }
         
-        .back-to-main {
-            background: rgba(255, 255, 255, 0.1);
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        
+        .btn-telegram {
+            background-color: #0088cc;
             color: white;
-            border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 8px;
-            cursor: pointer;
-            display: flex;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             font-weight: 500;
-            transition: background 0.3s;
         }
         
-        .back-to-main:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .btn-telegram:hover {
+            background-color: #006699;
         }
         
-        .onboarding-steps {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px 0 40px;
-            flex-wrap: wrap;
-        }
-        
-        .step-indicator {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .step-number {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--light-gray);
-            color: var(--yandex-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-        }
-        
-        .step-indicator.active .step-number {
-            background: var(--yandex-red);
-            color: white;
-            transform: scale(1.1);
-        }
-        
-        .step-indicator.completed .step-number {
-            background: var(--money-green);
-            color: white;
-        }
-        
-        .step-title {
-            font-weight: 600;
-            color: var(--yandex-gray);
-            transition: color 0.3s;
-        }
-        
-        .step-indicator.active .step-title {
-            color: var(--yandex-red);
-        }
-        
-        .step-content {
-            display: none;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px 40px;
-        }
-        
-        .step-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .income-calculator {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 30px;
-            border-radius: 16px;
-            margin: 30px 0;
-            border: 2px solid #e0e0e0;
-        }
-        
-        .calculator-input {
-            margin-bottom: 25px;
-        }
-        
-        .calculator-input label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--yandex-black);
-        }
-        
-        .calculator-input select, 
-        .calculator-input input[type="range"] {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 16px;
-            background: white;
-        }
-        
-        .range-value {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 5px;
-            color: var(--yandex-gray);
-        }
-        
-        .income-result-display {
-            text-align: center;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .income-result {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--money-green);
-            margin: 10px 0;
-            text-shadow: 0 2px 5px rgba(0, 200, 83, 0.2);
-        }
-        
-        .form-alternative {
-            background: #f8f9fa;
-            padding: 50px 30px;
-            border-radius: 16px;
-            border: 2px dashed #dee2e6;
-            text-align: center;
-            margin: 30px 0;
-        }
-        
-        .form-alternative-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-        
-        .form-info-box {
-            margin-top: 25px;
-            padding: 20px;
-            background: #fff3cd;
-            border-radius: 10px;
-            border: 1px solid #ffeaa7;
-            color: #856404;
-            text-align: left;
-        }
-        
-        .yandex-form-container {
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            margin: 30px 0;
-            height: 600px;
-        }
-        
-        .yandex-form-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .app-card {
-            background: var(--light-gray);
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            border: 2px solid transparent;
-            transition: all 0.3s;
-        }
-        
-        .app-card:hover {
-            border-color: var(--yandex-red);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .app-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--yandex-black);
-        }
-        
-        .app-links {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .app-links a {
-            padding: 8px 15px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .app-links .ios {
-            background: black;
-            color: white;
-        }
-        
-        .app-links .android {
-            background: #3DDC84;
-            color: #333;
-        }
-        
-        .checklist {
-            margin: 30px 0;
-        }
-        
-        .checklist-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            border: 2px solid var(--border-color);
-            transition: all 0.3s;
-        }
-        
-        .checklist-item:hover {
-            border-color: var(--yandex-red);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .checklist-checkbox {
-            width: 28px;
-            height: 28px;
-            border: 2px solid #ccc;
-            border-radius: 50%;
-            margin-right: 15px;
-            flex-shrink: 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        
-        .checklist-checkbox.checked {
-            background: var(--money-green);
-            border-color: var(--money-green);
-            color: white;
-        }
-        
-        .checklist-content h4 {
-            margin-bottom: 5px;
-        }
-        
-        .checklist-content p {
-            color: var(--yandex-gray);
-            font-size: 0.95rem;
-        }
-        
-        .onboarding-navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
-        }
-        
-        .btn-step {
-            padding: 12px 30px;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-        
-        .btn-step.prev {
-            background: white;
-            color: var(--yandex-gray);
-            border: 2px solid var(--border-color);
-        }
-        
-        .btn-step.prev:hover:not(:disabled) {
-            background: var(--light-gray);
-            border-color: var(--yandex-gray);
-        }
-        
-        .btn-step.next {
-            background: var(--yandex-red);
-            color: white;
-        }
-        
-        .btn-step.next:hover:not(:disabled) {
-            background: #FF3333;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 77, 77, 0.3);
-        }
-        
-        .btn-step:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        /* ========== БЛОК ЖИВОЙ СТАТИСТИКИ ========== */
-        .stats-section {
-            background: var(--gradient-blue);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-        }
-        
-        .stats-section h2 {
-            color: white;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 30px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-        
-        .stat-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            margin: 10px 0;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-        
-        /* ========== БЛОК ГАРАНТИЙ ========== */
-        .guarantees-section {
-            background-color: var(--light-gray);
-        }
-        
-        .guarantees-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .guarantee-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .guarantee-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .guarantee-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: var(--gradient-blue);
-        }
-        
-        .guarantee-card:nth-child(2)::before {
-            background: var(--gradient-green);
-        }
-        
-        .guarantee-card:nth-child(3)::before {
-            background: var(--gradient-red);
-        }
-        
-        .guarantee-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-blue);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 2rem;
-            color: white;
-        }
-        
-        .guarantee-card:nth-child(2) .guarantee-icon {
-            background: var(--gradient-green);
-        }
-        
-        .guarantee-card:nth-child(3) .guarantee-icon {
-            background: var(--gradient-red);
-        }
-        
-        /* ========== ОСНОВНЫЕ СТИЛИ ЛЕНДИНГА ========== */
-        .main-content {
-            transition: opacity 0.3s;
-        }
-        
-        .main-content.hidden {
-            opacity: 0;
-            pointer-events: none;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
+        /* ========== ШАПКА ========== */
         header {
             background-color: var(--yandex-black);
             color: white;
-            padding: 12px 0; /* Уменьшили отступ */
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -671,25 +226,25 @@
             color: var(--yandex-red);
         }
         
-        /* ИСПРАВЛЕНИЕ: Уменьшили отступы в hero-блоке */
+        /* ========== ГЛАВНЫЙ ЭКРАН ========== */
         .hero {
             background-color: var(--yandex-black);
             color: white;
-            padding: 30px 0 50px; /* Уменьшили верхний и нижний отступ */
+            padding: 50px 0 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
         
         .hero h1 {
-            margin-top: 10px; /* Уменьшили отступ сверху */
+            color: white;
             margin-bottom: 15px;
         }
         
         .hero-subtitle {
             font-size: 1.2rem;
-            margin-bottom: 15px;
-            max-width: 800px;
+            margin-bottom: 30px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
             opacity: 0.9;
@@ -704,13 +259,13 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
-            margin: 15px 0;
+            gap: 15px;
+            margin: 25px 0 30px;
         }
         
         .benefit-tag {
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 50px;
             font-weight: 500;
             display: flex;
@@ -723,53 +278,46 @@
             color: var(--money-green);
         }
         
-        /* ИСПРАВЛЕНИЕ: Убрали волну и добавили чистую кнопку */
-        .cta-buttons {
-            margin-top: 25px;
-            position: relative;
-            z-index: 10;
+        /* ========== БЛОК НЕДОВЕРИЯ/СОМНЕНИЙ ========== */
+        .objections-section {
+            background-color: #fff9e6;
+            padding: 40px 0;
+            border-top: 3px solid #ffcc00;
+            border-bottom: 3px solid #ffcc00;
         }
         
-        .features-grid {
+        .objections-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
         
-        .feature-card {
-            background-color: var(--background);
-            padding: 30px 25px;
+        .objection-card {
+            background: white;
+            padding: 25px;
             border-radius: 12px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--money-green);
         }
         
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-            border-color: var(--yandex-red);
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--yandex-red);
-            margin-bottom: 15px;
+        /* ========== ПРОСТЫЕ ШАГИ ========== */
+        .simple-steps {
+            background-color: var(--light-gray);
         }
         
         .steps-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
         
         .step {
-            background-color: var(--background);
+            background-color: white;
             text-align: center;
             padding: 30px 20px;
             border-radius: 12px;
-            border: 1px solid var(--border-color);
+            border: 2px solid var(--border-color);
             transition: transform 0.3s;
         }
         
@@ -797,17 +345,134 @@
             margin-bottom: 10px;
         }
         
-        .registration-box {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 40px 30px;
-            border-radius: 12px;
-            background-color: var(--background);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        /* ========== БЛОК ВЫПЛАТ И ПРИЛОЖЕНИЙ ========== */
+        .apps-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .apps-section h2 {
+            color: white;
+        }
+        
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .app-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
         }
         
+        .app-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .app-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .app-links a {
+            padding: 8px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .app-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* ========== РЕАЛЬНЫЕ ОТЗЫВЫ ========== */
+        .testimonials {
+            background-color: var(--light-gray);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            border-top: 4px solid var(--yandex-red);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--yandex-gray);
+        }
+        
+        /* ========== КОНТАКТЫ ========== */
+        .contacts {
+            background-color: var(--yandex-black);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .contacts h2 {
+            color: white;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .contact-method {
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* ========== FAQ ========== */
         .faq-item {
             background-color: var(--light-gray);
             margin-bottom: 12px;
@@ -837,35 +502,7 @@
             transition: max-height 0.3s ease, padding 0.3s ease;
         }
         
-        .contacts {
-            background-color: var(--yandex-black);
-            color: white;
-            text-align: center;
-            padding: 60px 0;
-        }
-        
-        .contacts h2 {
-            color: white;
-        }
-        
-        .contact-methods {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .contact-method {
-            padding: 25px;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-        }
-        
-        .contact-icon {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-        }
-        
+        /* ========== ПОДВАЛ ========== */
         footer {
             background-color: #111;
             color: #aaa;
@@ -887,32 +524,6 @@
             font-size: 0.9rem;
         }
         
-        .footer-buttons {
-            margin: 15px 0;
-        }
-        
-        .footer-buttons a, 
-        .footer-buttons button {
-            padding: 8px 15px;
-            font-size: 0.85rem;
-            border-radius: 6px;
-            text-decoration: none;
-            display: inline-block;
-            margin: 3px;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-telegram {
-            background-color: #0088cc;
-            color: white;
-        }
-        
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-        }
-        
         .copyright {
             margin-top: 15px;
             padding-top: 15px;
@@ -920,44 +531,50 @@
             font-size: 0.85rem;
         }
         
-        .floating-btn {
+        /* ========== МОДАЛЬНОЕ ОКНО ========== */
+        .modal {
+            display: none;
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-            background: var(--gradient-red);
-            color: white;
-            padding: 18px 32px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(255, 77, 77, 0.5);
-            display: flex;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
             align-items: center;
             justify-content: center;
-            transition: all 0.4s;
-            opacity: 0;
-            transform: translateY(20px);
-            visibility: hidden;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
             border: none;
+            font-size: 1.5rem;
             cursor: pointer;
+            color: var(--yandex-gray);
+            z-index: 10;
         }
         
-        .floating-btn.visible {
-            opacity: 1;
-            transform: translateY(0);
-            visibility: visible;
-        }
-        
-        .floating-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 77, 77, 0.7);
-        }
-        
-        .floating-btn i {
-            margin-right: 10px;
-            font-size: 1.2rem;
+        .modal-body {
+            padding: 30px;
+            text-align: center;
         }
         
         /* ========== МЕДИА ЗАПРОСЫ ========== */
@@ -988,57 +605,22 @@
             }
             
             .hero {
-                padding: 25px 0 40px; /* Уменьшили отступы для мобильных */
+                padding: 40px 0 50px;
             }
             
-            .floating-btn {
-                bottom: 20px;
-                right: 20px;
-                padding: 16px 28px;
-                font-size: 0.95rem;
+            .btn-primary {
+                padding: 18px 30px;
+                font-size: 1rem;
             }
             
-            .onboarding-steps {
+            .benefits-list {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
+                align-items: center;
             }
             
-            .step-indicator {
-                width: 100%;
-            }
-            
-            .income-result {
-                font-size: 2.8rem;
-            }
-            
-            .yandex-form-container {
-                height: 500px;
-            }
-            
-            .apps-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-grid,
-            .guarantees-grid,
-            .features-grid,
-            .steps-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .guarantee-card {
-                padding: 30px 20px;
-            }
-            
-            .stat-card {
-                padding: 25px 15px;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
+            .steps-container,
+            .objections-grid,
+            .testimonials-grid,
             .contact-methods {
                 grid-template-columns: 1fr;
             }
@@ -1057,645 +639,379 @@
     </style>
 </head>
 <body>
-    <!-- МАСТЕР ПОДКЛЮЧЕНИЯ -->
-    <div id="onboardingWizard" class="onboarding-wizard">
-        <header class="onboarding-header">
-            <div class="container">
-                <div class="logo">Таксопарк <span>«Пегас»</span></div>
-                <button class="back-to-main" id="backToMain">
-                    <i class="fas fa-arrow-left"></i> Вернуться на главную
-                </button>
-            </div>
-        </header>
-        
+    <!-- Шапка -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Таксопарк <span>«Пегас»</span></a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="#objections">О сомнениях</a></li>
+                    <li><a href="#steps">Как начать</a></li>
+                    <li><a href="#apps">Приложения</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
         <div class="container">
-            <div class="onboarding-steps">
-                <div class="step-indicator active" data-step="1">
-                    <div class="step-number">1</div>
-                    <div class="step-title">Расчёт дохода</div>
+            <h1>Начните работать в Яндекс.Такси уже завтра</h1>
+            <p class="hero-subtitle">Самая низкая комиссия <span class="green-highlight">2-3%</span>. Регистрация за 5 минут <span class="green-highlight">без звонков менеджеров</span>.</p>
+            
+            <div class="benefits-list">
+                <div class="benefit-tag">
+                    <i class="fas fa-check-circle"></i> Выплаты 24/7 на любую карту
                 </div>
-                <div class="step-indicator" data-step="2">
-                    <div class="step-number">2</div>
-                    <div class="step-title">Регистрация</div>
+                <div class="benefit-tag">
+                    <i class="fas fa-check-circle"></i> Управление в Telegram-боте
                 </div>
-                <div class="step-indicator" data-step="3">
-                    <div class="step-number">3</div>
-                    <div class="step-title">Приложения</div>
-                </div>
-                <div class="step-indicator" data-step="4">
-                    <div class="step-number">4</div>
-                    <div class="step-title">Подготовка</div>
+                <div class="benefit-tag">
+                    <i class="fas fa-check-circle"></i> Поддержка в WhatsApp
                 </div>
             </div>
             
-            <!-- ШАГ 1: РАСЧЁТ ДОХОДА -->
-            <div id="step1" class="step-content active">
-                <h2>Сколько вы будете зарабатывать?</h2>
-                <p>Рассчитайте ваш потенциальный доход в Яндекс.Такси</p>
-                
-                <div class="income-calculator">
-                    <div class="calculator-input">
-                        <label for="citySelect">Ваш город</label>
-                        <select id="citySelect">
-                            <option value="moscow">Москва</option>
-                            <option value="spb">Санкт-Петербург</option>
-                            <option value="ekb">Екатеринбург</option>
-                            <option value="kazan">Казань</option>
-                            <option value="other">Другой город</option>
-                        </select>
-                    </div>
-                    
-                    <div class="calculator-input">
-                        <label for="hoursSlider">
-                            Часов в день: <span id="hoursValue">8</span>
-                        </label>
-                        <input type="range" id="hoursSlider" min="4" max="12" value="8" step="1">
-                        <div class="range-value">
-                            <span>4 ч</span>
-                            <span>12 ч</span>
-                        </div>
-                    </div>
-                    
-                    <div class="calculator-input">
-                        <label for="daysSlider">
-                            Дней в неделю: <span id="daysValue">5</span>
-                        </label>
-                        <input type="range" id="daysSlider" min="3" max="7" value="5" step="1">
-                        <div class="range-value">
-                            <span>3 дн</span>
-                            <span>7 дн</span>
-                        </div>
-                    </div>
-                    
-                    <div class="income-result-display">
-                        <p>Ваш расчётный доход в месяц:</p>
-                        <div class="income-result" id="incomeResult">85 000 ₽</div>
-                        <p><small>После вычета комиссии 2-3%</small></p>
-                    </div>
-                </div>
-                
-                <div class="onboarding-navigation">
-                    <div></div> <!-- Пустой div для выравнивания -->
-                    <button class="btn-step next" data-next="2">Далее →</button>
-                </div>
-            </div>
+            <!-- ОДНА ГЛАВНАЯ КНОПКА -->
+            <button class="btn btn-primary" id="mainRegisterBtn">
+                <i class="fas fa-bolt" style="margin-right: 10px;"></i>
+                НАЧАТЬ РЕГИСТРАЦИЮ
+            </button>
             
-            <!-- ШАГ 2: РЕГИСТРАЦИЯ (ИСПРАВЛЕННАЯ ВЕРСИЯ) -->
-            <div id="step2" class="step-content">
-                <h2>Регистрация в Яндекс.Такси</h2>
-                <p>Заполните короткую форму. Таксопарк «Пегас» уже выбран автоматически.</p>
-                
-                <div class="form-alternative">
-                    <div class="form-alternative-icon">🚗</div>
-                    <h3 style="color: var(--yandex-black); margin-bottom: 15px;">Форма регистрации Яндекс.Такси</h3>
-                    <p style="margin-bottom: 25px; color: var(--yandex-gray); max-width: 600px; margin-left: auto; margin-right: auto;">
-                        Для безопасной регистрации форма открывается на официальном сайте Яндекс.Такси.<br>
-                        Нажмите кнопку ниже, чтобы перейти к заполнению.
-                    </p>
-                    
-                    <a 
-                        href="https://forms.fleet.yandex.ru/forms?specification=taxi&ref_id=018aedd61b874cbbba6e252f6502d71c&iframe=true&lang=ru" 
-                        target="_blank"
-                        class="btn btn-primary pulse"
-                        id="openYandexFormBtn"
-                        style="padding: 18px 40px; font-size: 1.1rem; margin-bottom: 15px;"
-                    >
-                        <i class="fas fa-external-link-alt" style="margin-right: 10px;"></i>
-                        ПЕРЕЙТИ К ФОРМЕ РЕГИСТРАЦИИ
-                    </a>
-                    
-                    <p style="color: var(--yandex-gray); font-size: 0.9rem; margin-bottom: 10px;">
-                        <i class="fas fa-lock" style="margin-right: 8px;"></i>
-                        Ваши данные защищены. Вы заполняете форму на официальном сайте Яндекс.
-                    </p>
-                </div>
-                
-                <div class="form-info-box">
-                    <p style="margin: 0;">
-                        <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
-                        <strong>Инструкция:</strong><br>
-                        1. Нажмите кнопку "Перейти к форме регистрации" выше<br>
-                        2. Заполните форму на сайте Яндекс.Такси<br>
-                        3. Вернитесь в эту вкладку и нажмите "Далее →"
-                    </p>
-                </div>
-                
-                <div class="onboarding-navigation">
-                    <button class="btn-step prev" data-prev="1">← Назад</button>
-                    <button class="btn-step next" data-next="3" disabled id="step2Next">Далее →</button>
-                </div>
-            </div>
+            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+                <i class="fas fa-shield-alt" style="margin-right: 5px;"></i>
+                Вы переходите на официальную форму Яндекс.Такси
+            </p>
             
-            <!-- ШАГ 3: ПРИЛОЖЕНИЯ -->
-            <div id="step3" class="step-content">
-                <h2>Установите приложения</h2>
-                <p>Два приложения для работы и мгновенных выплат</p>
-                
-                <div class="apps-grid">
-                    <div class="app-card">
-                        <div class="app-icon">🚕</div>
-                        <h3>Яндекс Про (для водителей)</h3>
-                        <p>Принимайте заказы, управляйте статистикой и зарабатывайте</p>
-                        <div class="app-links">
-                            <a href="https://apps.apple.com/ru/app/yandex-pro/id1522501504" target="_blank" class="ios">
-                                <i class="fab fa-apple"></i> App Store
-                            </a>
-                            <a href="https://play.google.com/store/apps/details?id=ru.yandex.taxi.driver" target="_blank" class="android">
-                                <i class="fab fa-android"></i> Google Play
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="app-card">
-                        <div class="app-icon">💳</div>
-                        <h3>Jump Taxi</h3>
-                        <p>Выводите деньги 24/7 на любую карту. Мгновенные переводы</p>
-                        <div class="app-links">
-                            <a href="https://apps.apple.com/ru/app/jump-taxi/id1504305203" target="_blank" class="ios">
-                                <i class="fab fa-apple"></i> App Store
-                            </a>
-                            <a href="https://play.google.com/store/apps/details?id=cards.baranka" target="_blank" class="android">
-                                <i class="fab fa-android"></i> Google Play
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="onboarding-navigation">
-                    <button class="btn-step prev" data-prev="2">← Назад</button>
-                    <button class="btn-step next" data-next="4">Далее →</button>
-                </div>
-            </div>
+            <!-- WhatsApp кнопка сразу под основной -->
+            <a href="https://wa.me/79292652779" class="btn-whatsapp" target="_blank" id="whatsappBtn">
+                <i class="fab fa-whatsapp"></i> Есть вопросы? Спросите в WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Блок снятия возражений -->
+    <section id="objections" class="objections-section">
+        <div class="container">
+            <h2>Частые сомнения водителей</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">Отвечаем на главные вопросы сразу, чтобы вы не сомневались</p>
             
-            <!-- ШАГ 4: ПОДГОТОВКА -->
-            <div id="step4" class="step-content">
-                <h2>Чек-лист для первого выезда</h2>
-                <p>Отметьте выполненные пункты и начинайте работать</p>
-                
-                <div class="checklist">
-                    <div class="checklist-item">
-                        <div class="checklist-checkbox" data-check="app1">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="checklist-content">
-                            <h4>Установлено «Яндекс Про»</h4>
-                            <p>Войдите в приложение, выбрав таксопарк «Пегас»</p>
-                        </div>
-                    </div>
-                    
-                    <div class="checklist-item">
-                        <div class="checklist-checkbox" data-check="app2">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="checklist-content">
-                            <h4>Установлено «Jump Taxi»</h4>
-                            <p>Войдите, выбрав агентство «Айрулер» для выплат</p>
-                        </div>
-                    </div>
-                    
-                    <div class="checklist-item">
-                        <div class="checklist-checkbox" data-check="bot">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="checklist-content">
-                            <h4>Telegram-бот для управления</h4>
-                            <p>@TaxiVIPhelpBot — смена авто и способа оплаты</p>
-                            <div style="margin-top: 10px;">
-                                <a href="https://t.me/TaxiVIPhelpBot" target="_blank" class="btn btn-telegram" style="padding: 8px 15px; font-size: 0.9rem;">
-                                    <i class="fab fa-telegram"></i> Открыть бота
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="objections-grid">
+                <div class="objection-card">
+                    <h3><i class="fas fa-phone-slash" style="color: var(--yandex-red); margin-right: 10px;"></i> Мне позвонят?</h3>
+                    <p><strong>Нет.</strong> Регистрация полностью автоматическая. Никаких звонков менеджеров.</p>
                 </div>
                 
-                <div style="background: var(--gradient-green); color: white; padding: 30px; border-radius: 15px; margin-top: 40px; text-align: center;">
-                    <h3 style="color: white;">Остались вопросы?</h3>
-                    <p style="margin-bottom: 20px;">Напишите в WhatsApp — ответим в течение 5 минут</p>
-                    <a href="https://wa.me/79292652779" target="_blank" class="btn" style="background: white; color: #25D366; padding: 12px 25px; font-weight: 600;">
-                        <i class="fab fa-whatsapp"></i> Написать в WhatsApp
-                    </a>
+                <div class="objection-card">
+                    <h3><i class="fas fa-percentage" style="color: var(--yandex-red); margin-right: 10px;"></i> Комиссия точно 2-3%?</h3>
+                    <p><strong>Да.</strong> Самая низкая ставка на рынке. Никаких скрытых платежей.</p>
                 </div>
                 
-                <div class="onboarding-navigation">
-                    <button class="btn-step prev" data-prev="3">← Назад</button>
-                    <button class="btn-step" id="completeBtn" style="background: var(--money-green); color: white;">✅ Начать работать!</button>
+                <div class="objection-card">
+                    <h3><i class="fas fa-wallet" style="color: var(--yandex-red); margin-right: 10px;"></i> Как быстро выводятся деньги?</h3>
+                    <p><strong>24/7 на любую карту.</strong> Через приложение JumpTaxi — за несколько минут.</p>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- ОСНОВНОЙ КОНТЕНТ -->
-    <div id="mainContent" class="main-content">
-        <!-- Шапка -->
-        <header>
-            <div class="container header-container">
-                <a href="#" class="logo">Таксопарк <span>«Пегас»</span></a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <nav>
-                    <ul id="mainMenu">
-                        <li><a href="#advantages">Преимущества</a></li>
-                        <li><a href="#stats">Статистика</a></li>
-                        <li><a href="#steps">Как начать</a></li>
-                        <li><a href="#guarantees">Гарантии</a></li>
-                        <li><a href="#registration">Регистрация</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+    </section>
 
-        <!-- Главный экран -->
-        <section class="hero">
-            <div class="container">
-                <!-- ИСПРАВЛЕНИЕ: Убрали эмодзи-машинку из заголовка -->
-                <h1>Работайте в Яндекс.Такси с самой низкой комиссией</h1>
-                <p class="hero-subtitle">Подключайтесь за 5 минут. <span class="green-highlight">Комиссия всего 2-3%.</span> Выплаты 24/7 на любую карту. Ваше авто.</p>
+    <!-- Простые шаги -->
+    <section id="steps" class="simple-steps">
+        <div class="container">
+            <h2>Начните работать за 3 простых шага</h2>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>Форма регистрации</h3>
+                    <p>Заполните короткую форму на сайте Яндекс.Такси</p>
+                    <button class="btn-primary" style="margin-top: 15px; padding: 12px 20px; font-size: 0.9rem;" onclick="openYandexForm()">
+                        📝 Заполнить форму
+                    </button>
+                </div>
                 
-                <div class="benefits-list">
-                    <div class="benefit-tag">
-                        <i class="fas fa-check-circle"></i> Без звонков менеджеров
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <div class="benefit-tag">
-                        <i class="fas fa-check-circle"></i> Без ожидания
+                    <h3>Установите приложения</h3>
+                    <p>Яндекс Про для работы и JumpTaxi для выплат</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-flag-checkered"></i>
                     </div>
-                    <div class="benefit-tag">
-                        <i class="fas fa-check-circle"></i> Автоматическая регистрация
+                    <h3>Выходите на линию</h3>
+                    <p>Принимайте заказы, выводите деньги в любое время</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Приложения и выплаты -->
+    <section id="apps" class="apps-section">
+        <div class="container">
+            <h2>Установите два приложения</h2>
+            <p style="text-align: center; margin-bottom: 30px; opacity: 0.9;">Всё, что нужно для работы и заработка</p>
+            
+            <div class="apps-grid">
+                <div class="app-card">
+                    <div class="app-icon">🚕</div>
+                    <h3>Яндекс Про</h3>
+                    <p>Для приема заказов и работы в Яндекс.Такси</p>
+                    <div class="app-links">
+                        <a href="https://apps.apple.com/ru/app/yandex-pro/id1522501504" target="_blank">
+                            <i class="fab fa-apple"></i> iOS
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=ru.yandex.taxi.driver" target="_blank">
+                            <i class="fab fa-android"></i> Android
+                        </a>
                     </div>
                 </div>
                 
-                <div class="cta-buttons">
-                    <a href="#onboarding" target="_blank" class="btn btn-primary pulse">
-                        🚀 РАССЧИТАТЬ ДОХОД И ПОДКЛЮЧИТЬСЯ
-                    </a>
+                <div class="app-card">
+                    <div class="app-icon">💳</div>
+                    <h3>Jump Taxi</h3>
+                    <p>Для мгновенных выплат 24/7 на любую карту</p>
+                    <div class="app-links">
+                        <a href="https://apps.apple.com/ru/app/jump-taxi/id1504305203" target="_blank">
+                            <i class="fab fa-apple"></i> iOS
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=cards.baranka" target="_blank">
+                            <i class="fab fa-android"></i> Android
+                        </a>
+                    </div>
                 </div>
             </div>
             
-            <!-- ИСПРАВЛЕНИЕ: Убрали волны CSS, которые накладывались на кнопку -->
-        </section>
+            <div style="margin-top: 40px; text-align: center;">
+                <h3>Telegram-бот для управления</h3>
+                <p style="margin-bottom: 15px;">Смена автомобиля, способа оплаты — за 2 минуты в боте</p>
+                <a href="https://t.me/TaxiVIPhelpBot" class="btn-telegram" target="_blank">
+                    <i class="fab fa-telegram"></i> @TaxiVIPhelpBot
+                </a>
+            </div>
+        </div>
+    </section>
 
-        <!-- Блок живой статистики -->
-        <section id="stats" class="stats-section">
-            <div class="container">
-                <h2>💪 Водители выбирают «Пегас»</h2>
-                <p style="max-width: 800px; margin: 0 auto 30px; opacity: 0.9; font-size: 1.1rem;">Мы создаем условия для стабильного заработка. Вот цифры, которые говорят сами за себя</p>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">👥</div>
-                        <div class="stat-number" id="driversCount">1,283</div>
-                        <div class="stat-label">водителей уже подключились</div>
+    <!-- Реальные отзывы -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Водители о работе с «Пегас»</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">М</div>
+                        <div>
+                            <h4 style="margin: 0;">Михаил, Москва</h4>
+                            <small>Работает 4 месяца</small>
+                        </div>
                     </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">💰</div>
-                        <div class="stat-number" id="payoutsCount">43.2</div>
-                        <div class="stat-label">млн ₽ выплачено за месяц</div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">📈</div>
-                        <div class="stat-number" id="avgIncome">86.5</div>
-                        <div class="stat-label">тыс ₽ средний доход водителя</div>
-                    </div>
+                    <p>«Зарегистрировался сам, без звонков. Комиссия действительно 2%. Выплаты приходят за минуты, даже ночью.»</p>
                 </div>
                 
-                <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);">
-                    <p style="font-size: 0.95rem; opacity: 0.8;">
-                        <i class="fas fa-sync-alt" style="margin-right: 8px;"></i>
-                        <span id="lastConnection">Сегодня в 15:42 подключился Андрей из Москвы</span>
-                    </p>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">А</div>
+                        <div>
+                            <h4 style="margin: 0;">Алексей, СПб</h4>
+                            <small>Работает 2 месяца</small>
+                        </div>
+                    </div>
+                    <p>«Менял машину через Telegram-бота — всё заняло 5 минут. Никаких заявок и ожидания.»</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Преимущества -->
-        <section id="advantages" class="features">
-            <div class="container">
-                <h2>✅ Почему «Пегас»?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3>Автоматизация</h3>
-                        <p>Регистрация онлайн за 5 минут. Никаких звонков и ожидания. Всё прозрачно и быстро.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-percentage"></i>
-                        </div>
-                        <h3>Низкая комиссия</h3>
-                        <p>Всего <span class="green-highlight">2-3%</span> — самая выгодная ставка на рынке. Зарабатывайте больше.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-wallet"></i>
-                        </div>
-                        <h3>Выплаты 24/7</h3>
-                        <p>💳 Выводите деньги в любое время на карту любого банка. Мгновенные переводы.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fab fa-telegram"></i>
-                        </div>
-                        <h3>Управление в боте</h3>
-                        <p>Меняйте авто и способ оплаты в Telegram-боте @TaxiVIPhelpBot за 2 минуты.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Как начать -->
-        <section id="steps" class="steps">
-            <div class="container">
-                <h2>📋 Начните работать за 4 шага</h2>
-                <div class="steps-container">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-icon">
-                            <i class="fas fa-edit"></i>
-                        </div>
-                        <h3>Форма регистрации</h3>
-                        <p>Заполните короткую форму Яндекс — получите доступ к следующим шагам.</p>
-                        <a href="#onboarding" target="_blank" class="btn btn-primary btn-small" style="margin-top: 10px; padding: 12px 20px; font-size: 0.95rem;">
-                            📝 Заполнить форму
-                        </a>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3>Установите приложения</h3>
-                        <p>📲 Яндекс Про для работы и Jump Taxi для выплат 24/7.</p>
-                        <a href="#onboarding" target="_blank" class="btn btn-primary btn-small" style="margin-top: 10px; padding: 12px 20px; font-size: 0.95rem;">
-                            📲 Установить приложения
-                        </a>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-icon">
-                            <i class="fas fa-sign-in-alt"></i>
-                        </div>
-                        <h3>Авторизация</h3>
-                        <p>Войдите в «Яндекс Про», выбрав таксопарк «Пегас». В «Jump Taxi» выберите «Айрулер».</p>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <div class="step-icon">
-                            <i class="fas fa-flag-checkered"></i>
-                        </div>
-                        <h3>В работе!</h3>
-                        <p>🚀 Принимайте заказы. Выводите деньги в любое время через «Jump Taxi».</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Блок гарантий -->
-        <section id="guarantees" class="guarantees-section">
-            <div class="container">
-                <h2>🛡️ Мы гарантируем</h2>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem; color: var(--yandex-gray);">Ваше спокойствие и успешное подключение — наш главный приоритет</p>
                 
-                <div class="guarantees-grid">
-                    <div class="guarantee-card">
-                        <div class="guarantee-icon">
-                            <i class="fas fa-shield-alt"></i>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">Д</div>
+                        <div>
+                            <h4 style="margin: 0;">Дмитрий, Казань</h4>
+                            <small>Работает 6 месяцев</small>
                         </div>
-                        <h3>Гарантия подключения</h3>
-                        <p>Поможем, если Яндекс откажет. <strong>99% успешных подключений</strong> с первого раза благодаря нашей проверенной методике.</p>
                     </div>
-                    
-                    <div class="guarantee-card">
-                        <div class="guarantee-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <h3>Поддержка 24/7</h3>
-                        <p>Личный консультант в <strong>WhatsApp</strong>. <strong>Ответим за 5 минут</strong> в рабочее время. Поможем на любом этапе — от регистрации до первого заказа.</p>
-                    </div>
-                    
-                    <div class="guarantee-card">
-                        <div class="guarantee-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3>Прозрачные условия</h3>
-                        <p>Никаких скрытых комиссий и доплат. <strong>Только 2-3% и честный расчет.</strong> Вы всегда видите, сколько и за что платите.</p>
-                    </div>
+                    <p>«Когда были вопросы по регистрации, ответили в WhatsApp за 3 минуты. Работаю спокойно.»</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Регистрация -->
-        <section id="registration" class="registration">
-            <div class="container">
-                <h2>🚀 Начните работать сегодня</h2>
-                <div class="registration-box">
-                    <h3 style="color: var(--yandex-red); margin-bottom: 20px;">Регистрация за 1 минуту</h3>
-                    
-                    <p style="margin-bottom: 25px; font-size: 1.1rem;">Нажмите кнопку, заполните короткую форму на сайте Яндекс — и сразу получите доступ к системе. Таксопарк «Пегас» уже выбран.</p>
-                    
-                    <a href="#onboarding" target="_blank" class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 1.2rem; margin-bottom: 15px; border-radius: 12px; text-decoration: none; display: block;">
-                        🚗 ПЕРЕЙТИ К РЕГИСТРАЦИИ
+    <!-- Контакты -->
+    <section id="contacts" class="contacts">
+        <div class="container">
+            <h2>Всё для комфортной работы</h2>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>Поддержка в WhatsApp</h3>
+                    <p>Ответим за 5 минут в рабочее время</p>
+                    <p><strong>+7 (929) 265-27-79</strong></p>
+                    <a href="https://wa.me/79292652779" class="btn-whatsapp" target="_blank" style="margin-top: 15px;">
+                        <i class="fab fa-whatsapp"></i> Написать
                     </a>
-                    
-                    <p style="font-size: 0.9rem; color: var(--yandex-gray);">
-                        <i class="fas fa-lock" style="margin-right: 5px;"></i> Ваши данные защищены. Вы перейдете на официальную страницу Яндекс.
-                    </p>
                 </div>
-            </div>
-        </section>
-
-        <!-- FAQ -->
-        <section id="faq" class="faq">
-            <div class="container">
-                <h2>❓ Ответы на вопросы</h2>
-                <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Мне позвонят после регистрации?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p><strong>Нет.</strong> Регистрация полностью автоматическая. После формы вы сразу получите дальнейшие инструкции в нашем пошаговом мастере.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Как настроить работу только по безналу?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>В Telegram-боте <strong>@TaxiVIPhelpBot</strong> выберите «Способ оплаты» → «Безналичный расчет». Чтобы снова принимать все заказы, переключите настройку обратно. Это займет 30 секунд.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Как сменить машину?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>В Telegram-боте <strong>@TaxiVIPhelpBot</strong> выберите «Сменить автомобиль», укажите данные — и можно работать. Никаких заявок и ожидания.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Как быстро выводятся деньги?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Через приложение <strong>«Jump Taxi»</strong> деньги приходят на карту в течение нескольких минут, 24/7. Вывод доступен даже ночью.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Контакты -->
-        <section id="contacts" class="contacts">
-            <div class="container">
-                <h2>📞 Все для комфортной работы</h2>
                 
-                <div class="contact-methods">
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fab fa-telegram"></i>
-                        </div>
-                        <h3>Управление через бота</h3>
-                        <p>Telegram-бот: <strong>@TaxiVIPhelpBot</strong></p>
-                        <p>Смена авто, способа оплаты</p>
-                        <a href="https://t.me/TaxiVIPhelpBot" class="btn btn-telegram btn-small" target="_blank" style="margin-top: 10px;">
-                            <i class="fab fa-telegram"></i> Открыть бота
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>Telegram-бот</h3>
+                    <p>Управление автомобилем и настройками</p>
+                    <p><strong>@TaxiVIPhelpBot</strong></p>
+                    <a href="https://t.me/TaxiVIPhelpBot" class="btn-telegram" target="_blank" style="margin-top: 15px;">
+                        <i class="fab fa-telegram"></i> Открыть бота
+                    </a>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Выплаты 24/7</h3>
+                    <p>Приложение <strong>Jump Taxi</strong></p>
+                    <p>Мгновенные переводы на карту</p>
+                    <div class="app-links" style="margin-top: 15px; justify-content: center;">
+                        <a href="https://play.google.com/store/apps/details?id=cards.baranka" target="_blank" style="background: rgba(255,255,255,0.1);">
+                            <i class="fab fa-android"></i>
                         </a>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fas fa-wallet"></i>
-                        </div>
-                        <h3>Выплаты</h3>
-                        <p>Приложение <strong>«Jump Taxi»</strong></p>
-                        <p>Вывод на карту 24/7</p>
-                        <div style="margin-top: 10px;">
-                            <a href="https://play.google.com/store/apps/details?id=cards.baranka" class="btn btn-app btn-small" target="_blank">
-                                <i class="fab fa-android"></i>
-                            </a>
-                            <a href="https://apps.apple.com/ru/app/jump-taxi/id1504305203" class="btn btn-app btn-small" target="_blank">
-                                <i class="fab fa-apple"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <h3>Поддержка</h3>
-                        <p>WhatsApp: <strong>+7 (929) 265-27-79</strong></p>
-                        <p>Только по вашей инициативе</p>
-                        <a href="https://wa.me/79292652779" class="btn btn-whatsapp btn-small" target="_blank" style="margin-top: 10px;">
-                            <i class="fab fa-whatsapp"></i> Написать
+                        <a href="https://apps.apple.com/ru/app/jump-taxi/id1504305203" target="_blank" style="background: rgba(255,255,255,0.1);">
+                            <i class="fab fa-apple"></i>
                         </a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Подвал -->
-        <footer>
-            <div class="container">
-                <div class="footer-links">
-                    <a href="#advantages">Преимущества</a>
-                    <a href="#stats">Статистика</a>
-                    <a href="#steps">Как начать</a>
-                    <a href="#guarantees">Гарантии</a>
-                    <a href="#faq">Вопросы</a>
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Ответы на вопросы</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Как настроить работу только по безналу?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>В Telegram-боте <strong>@TaxiVIPhelpBot</strong> выберите «Способ оплаты» → «Безналичный расчет». Чтобы снова принимать все заказы, переключите настройку обратно. Это займет 30 секунд.</p>
+                    </div>
                 </div>
                 
-                <div class="footer-buttons">
-                    <a href="https://t.me/TaxiVIPhelpBot" class="btn-telegram" target="_blank">
-                        <i class="fab fa-telegram"></i> Бот
-                    </a>
-                    <a href="#onboarding" target="_blank" class="btn btn-primary btn-small">
-                        ⚡️ Регистрация
-                    </a>
-                    <a href="https://wa.me/79292652779" class="btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Поддержка
-                    </a>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Как сменить машину?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>В Telegram-боте <strong>@TaxiVIPhelpBot</strong> выберите «Сменить автомобиль», укажите данные — и можно работать. Никаких заявок и ожидания.</p>
+                    </div>
                 </div>
                 
-                <div class="copyright">
-                    <p>Таксопарк «Пегас». Автоматическое подключение к Яндекс.Такси. Комиссия от 2%. Выплаты 24/7.</p>
-                    <p>© 2023 Таксопарк «Пегас»</p>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Что делать, если Яндекс отклонил заявку?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Напишите в WhatsApp — поможем подключиться. 99% заявок проходят с первого раза при правильном заполнении.</p>
+                    </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </section>
 
-        <!-- Плавающая кнопка -->
-        <a href="#onboarding" target="_blank" id="floatingBtn" class="floating-btn">
-            <i class="fas fa-car"></i> ПОДКЛЮЧИТЬСЯ
-        </a>
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#objections">О сомнениях</a>
+                <a href="#steps">Как начать</a>
+                <a href="#apps">Приложения</a>
+                <a href="#contacts">Контакты</a>
+                <a href="#faq">Вопросы</a>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <button class="btn-primary" onclick="openYandexForm()" style="padding: 12px 24px; font-size: 0.9rem; display: inline-block; width: auto;">
+                    ⚡️ Начать регистрацию
+                </button>
+            </div>
+            
+            <div class="copyright">
+                <p>Таксопарк «Пегас». Автоматическое подключение к Яндекс.Такси. Комиссия 2-3%. Выплаты 24/7.</p>
+                <p>© 2023 Таксопарк «Пегас»</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно с инструкцией -->
+    <div id="instructionModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-body">
+                <h2 style="color: var(--yandex-red); margin-bottom: 20px;">Важная инструкция</h2>
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">
+                    <strong>Форма регистрации откроется на официальном сайте Яндекс.Такси.</strong>
+                </p>
+                
+                <div style="text-align: left; background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                    <p style="margin-bottom: 10px;"><strong>Что делать:</strong></p>
+                    <ol style="margin-left: 20px; margin-bottom: 0;">
+                        <li>Заполните форму на сайте Яндекс</li>
+                        <li>Вернитесь на эту страницу</li>
+                        <li>Установите приложения (инструкция ниже)</li>
+                    </ol>
+                </div>
+                
+                <p style="margin-bottom: 25px;">
+                    <i class="fas fa-lock" style="margin-right: 8px;"></i>
+                    Ваши данные защищены. Вы заполняете форму на официальном сайте Яндекс.
+                </p>
+                
+                <button class="btn-primary" onclick="openYandexFormFinal()" style="width: 100%;">
+                    <i class="fas fa-external-link-alt" style="margin-right: 10px;"></i>
+                    ПОНЯТНО, ПЕРЕЙТИ К ФОРМЕ
+                </button>
+                
+                <p style="margin-top: 15px; font-size: 0.9rem;">
+                    <a href="https://wa.me/79292652779" target="_blank" style="color: var(--yandex-red);">
+                        <i class="fab fa-whatsapp"></i> Нужна помощь? Напишите в WhatsApp
+                    </a>
+                </p>
+            </div>
+        </div>
     </div>
 
     <script>
         // ============================================
-        // 1. ОБЩАЯ ЛОГИКА СТРАНИЦЫ
+        // 1. ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ
         // ============================================
         
         document.addEventListener('DOMContentLoaded', function() {
-            // Проверяем, нужно ли показать мастер
-            if (window.location.hash === '#onboarding') {
-                showOnboarding();
-            } else {
-                showMainContent();
-            }
-            
-            // Инициализируем все компоненты
             initMobileMenu();
             initFAQ();
-            initFloatingButton();
-            initDynamicStats();
             initSmoothScroll();
-            initOnboardingWizard();
-            initTelegramNotifications();
+            initModal();
+            initAnalytics();
             
-            console.log('✅ Лендинг Таксопарк «Пегас» успешно загружен');
+            console.log('✅ Лендинг Таксопарк «Пегас» загружен');
         });
         
         // ============================================
-        // 2. УПРАВЛЕНИЕ МАСТЕРОМ И ОСНОВНЫМ КОНТЕНТОМ
-        // ============================================
-        
-        function showOnboarding() {
-            document.getElementById('onboardingWizard').classList.add('active');
-            document.getElementById('mainContent').classList.add('hidden');
-            document.body.style.overflow = 'hidden';
-            
-            // Отправляем событие в Яндекс.Метрику
-            if (typeof ym !== 'undefined') {
-                ym(105719635, 'reachGoal', 'onboarding_opened');
-            }
-        }
-        
-        function showMainContent() {
-            document.getElementById('onboardingWizard').classList.remove('active');
-            document.getElementById('mainContent').classList.remove('hidden');
-            document.body.style.overflow = 'auto';
-        }
-        
-        // ============================================
-        // 3. МОБИЛЬНОЕ МЕНЮ
+        // 2. МОБИЛЬНОЕ МЕНЮ
         // ============================================
         
         function initMobileMenu() {
@@ -1704,16 +1020,12 @@
             
             if (!mobileMenuBtn || !mainMenu) return;
             
-            // Функция переключения меню
-            function toggleMenu() {
+            mobileMenuBtn.addEventListener('click', function() {
                 mainMenu.classList.toggle('active');
                 mobileMenuBtn.innerHTML = mainMenu.classList.contains('active') 
                     ? '<i class="fas fa-times"></i>' 
                     : '<i class="fas fa-bars"></i>';
-            }
-            
-            // Обработчик клика по кнопке
-            mobileMenuBtn.addEventListener('click', toggleMenu);
+            });
             
             // Закрытие меню при клике на ссылку
             mainMenu.querySelectorAll('a').forEach(link => {
@@ -1735,7 +1047,7 @@
         }
         
         // ============================================
-        // 4. FAQ (АККОРДЕОН)
+        // 3. FAQ (АККОРДЕОН)
         // ============================================
         
         function initFAQ() {
@@ -1766,107 +1078,25 @@
                         icon.classList.add('fa-chevron-up');
                         
                         // Отправляем событие в Яндекс.Метрику
-                        if (typeof ym !== 'undefined') {
-                            ym(105719635, 'reachGoal', 'faq_opened');
-                        }
+                        trackEvent('faq_opened', this.textContent.trim());
                     }
                 });
             });
         }
         
         // ============================================
-        // 5. ПЛАВАЮЩАЯ КНОПКА
-        // ============================================
-        
-        function initFloatingButton() {
-            const floatingBtn = document.getElementById('floatingBtn');
-            
-            if (!floatingBtn) return;
-            
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 500 && window.location.hash !== '#onboarding') {
-                    floatingBtn.classList.add('visible');
-                } else {
-                    floatingBtn.classList.remove('visible');
-                }
-            });
-            
-            // Отправляем событие при клике
-            floatingBtn.addEventListener('click', function() {
-                if (typeof ym !== 'undefined') {
-                    ym(105719635, 'reachGoal', 'floating_button_clicked');
-                }
-            });
-        }
-        
-        // ============================================
-        // 6. ДИНАМИЧЕСКАЯ СТАТИСТИКА
-        // ============================================
-        
-        function initDynamicStats() {
-            const driversElement = document.getElementById('driversCount');
-            const payoutsElement = document.getElementById('payoutsCount');
-            const avgIncomeElement = document.getElementById('avgIncome');
-            const lastConnectionElement = document.getElementById('lastConnection');
-            
-            if (!driversElement) return;
-            
-            // Начальные значения
-            let drivers = 1283;
-            let payouts = 43.2;
-            let avgIncome = 86.5;
-            
-            function updateStats() {
-                // Реалистичный рост
-                drivers += Math.floor(Math.random() * 2);
-                payouts += (Math.random() * 0.05);
-                avgIncome += (Math.random() * 0.02);
-                
-                // Обновляем элементы
-                driversElement.textContent = drivers.toLocaleString('ru-RU');
-                payoutsElement.textContent = payouts.toFixed(1);
-                avgIncomeElement.textContent = avgIncome.toFixed(1);
-                
-                // Обновляем последнее подключение
-                const connections = [
-                    "Только что подключился Алексей из Санкт-Петербурга",
-                    "10 минут назад начал работу Михаил из Екатеринбурга",
-                    "Сегодня в 15:42 подключился Андрей из Москвы",
-                    "35 минут назад выехал на линию Дмитрий из Казани",
-                    "Только что зарегистрировался Сергей из Новосибирска"
-                ];
-                
-                if (lastConnectionElement) {
-                    const randomConnection = connections[Math.floor(Math.random() * connections.length)];
-                    lastConnectionElement.textContent = randomConnection;
-                }
-            }
-            
-            // Обновляем сразу
-            updateStats();
-            
-            // Обновляем каждые 30 секунд
-            setInterval(updateStats, 30000);
-        }
-        
-        // ============================================
-        // 7. ПЛАВНАЯ ПРОКРУТКА
+        // 4. ПЛАВНАЯ ПРОКРУТКА
         // ============================================
         
         function initSmoothScroll() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
-                    
-                    // Игнорируем ссылки на мастер (они открываются в новой вкладке)
-                    if (href === '#onboarding') return;
+                    if (href === '#' || href.startsWith('#!')) return;
                     
                     e.preventDefault();
                     
-                    const targetId = href;
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
+                    const targetElement = document.querySelector(href);
                     if (targetElement) {
                         // Закрываем мобильное меню
                         const mainMenu = document.getElementById('mainMenu');
@@ -1887,414 +1117,210 @@
         }
         
         // ============================================
-        // 8. МАСТЕР ПОДКЛЮЧЕНИЯ (ИСПРАВЛЕННАЯ ВЕРСИЯ)
+        // 5. МОДАЛЬНОЕ ОКНО И РЕГИСТРАЦИЯ
         // ============================================
         
-        function initOnboardingWizard() {
-            // Элементы мастера
-            const backToMainBtn = document.getElementById('backToMain');
-            const stepIndicators = document.querySelectorAll('.step-indicator');
-            const stepContents = document.querySelectorAll('.step-content');
-            const prevButtons = document.querySelectorAll('.btn-step.prev');
-            const nextButtons = document.querySelectorAll('.btn-step.next');
-            const completeBtn = document.getElementById('completeBtn');
-            const checkboxes = document.querySelectorAll('.checklist-checkbox');
-            const step2NextBtn = document.getElementById('step2Next');
-            const openYandexFormBtn = document.getElementById('openYandexFormBtn');
+        function initModal() {
+            const modal = document.getElementById('instructionModal');
+            const closeModalBtn = document.getElementById('closeModal');
+            const mainRegisterBtn = document.getElementById('mainRegisterBtn');
+            const whatsappBtn = document.getElementById('whatsappBtn');
             
-            // Текущий шаг
-            let currentStep = 1;
-            const totalSteps = 4;
+            if (!modal || !mainRegisterBtn) return;
             
-            // Восстанавливаем шаг из localStorage
-            const savedStep = localStorage.getItem('onboarding_step');
-            if (savedStep && window.location.hash === '#onboarding') {
-                currentStep = parseInt(savedStep);
-            }
-            
-            // Инициализация калькулятора дохода
-            function initIncomeCalculator() {
-                const citySelect = document.getElementById('citySelect');
-                const hoursSlider = document.getElementById('hoursSlider');
-                const daysSlider = document.getElementById('daysSlider');
-                const hoursValue = document.getElementById('hoursValue');
-                const daysValue = document.getElementById('daysValue');
-                const incomeResult = document.getElementById('incomeResult');
-                
-                if (!citySelect || !hoursSlider || !daysSlider) return;
-                
-                // Тарифы по городам (средний доход в час после комиссии 2-3%)
-                const cityRates = {
-                    moscow: 450,
-                    spb: 380,
-                    ekb: 320,
-                    kazan: 300,
-                    other: 280
-                };
-                
-                function calculateIncome() {
-                    const city = citySelect.value;
-                    const hours = parseInt(hoursSlider.value);
-                    const days = parseInt(daysSlider.value);
-                    const hourlyRate = cityRates[city];
-                    const weeksInMonth = 4.3;
-                    
-                    // Расчёт: часовая ставка * часы * дни * недели в месяце
-                    const monthlyIncome = Math.round(hourlyRate * hours * days * weeksInMonth);
-                    incomeResult.textContent = monthlyIncome.toLocaleString('ru-RU') + ' ₽';
-                    hoursValue.textContent = hours + ' ч';
-                    daysValue.textContent = days + ' дн';
-                    
-                    // Сохраняем в localStorage для использования на других шагах
-                    localStorage.setItem('calculated_income', monthlyIncome);
-                }
-                
-                // События
-                citySelect.addEventListener('change', calculateIncome);
-                hoursSlider.addEventListener('input', function() {
-                    hoursValue.textContent = this.value + ' ч';
-                    calculateIncome();
-                });
-                daysSlider.addEventListener('input', function() {
-                    daysValue.textContent = this.value + ' дн';
-                    calculateIncome();
-                });
-                
-                // Инициализация
-                calculateIncome();
-            }
-            
-            // Загрузка формы Яндекса (исправленная версия)
-            function loadYandexForm() {
-                if (!openYandexFormBtn || !step2NextBtn) return;
-                
-                // Восстанавливаем состояние из localStorage
-                if (localStorage.getItem('yandex_form_opened') === 'true') {
-                    step2NextBtn.disabled = false;
-                    step2NextBtn.style.opacity = '1';
-                    
-                    const step2Indicator = document.querySelector('.step-indicator[data-step="2"]');
-                    if (step2Indicator) {
-                        step2Indicator.classList.add('completed');
-                    }
-                }
-                
-                // Обработчик клика на кнопку открытия формы
-                openYandexFormBtn.addEventListener('click', function(e) {
-                    // Открываем в новой вкладке (уже есть target="_blank")
-                    
-                    // Отправляем событие в Яндекс.Метрику
-                    if (typeof ym !== 'undefined') {
-                        ym(105719635, 'reachGoal', 'yandex_form_opened');
-                    }
-                    
-                    // Разблокируем кнопку "Далее" через 2 секунды
-                    setTimeout(() => {
-                        step2NextBtn.disabled = false;
-                        step2NextBtn.style.opacity = '1';
-                        localStorage.setItem('yandex_form_opened', 'true');
-                        
-                        // Помечаем шаг как выполненный
-                        const step2Indicator = document.querySelector('.step-indicator[data-step="2"]');
-                        if (step2Indicator) {
-                            step2Indicator.classList.add('completed');
-                        }
-                        
-                        // Показываем всплывающее уведомление
-                        showNotification('Форма открыта! Заполните её и вернитесь на эту страницу.');
-                    }, 2000);
-                });
-                
-                // Кнопка "Далее" также может быть разблокирована вручную
-                step2NextBtn.addEventListener('click', function() {
-                    if (!this.disabled) {
-                        localStorage.setItem('yandex_form_completed', 'true');
-                    }
-                });
-            }
-            
-            // Вспомогательная функция для уведомлений
-            function showNotification(message) {
-                // Создаем элемент уведомления
-                const notification = document.createElement('div');
-                notification.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: var(--yandex-red);
-                    color: white;
-                    padding: 15px 20px;
-                    border-radius: 8px;
-                    z-index: 99999;
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                    animation: slideIn 0.3s ease;
-                `;
-                
-                notification.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-check-circle"></i>
-                        <span>${message}</span>
-                    </div>
-                `;
-                
-                document.body.appendChild(notification);
-                
-                // Удаляем через 5 секунд
-                setTimeout(() => {
-                    notification.style.animation = 'slideOut 0.3s ease';
-                    setTimeout(() => {
-                        if (notification.parentNode) {
-                            notification.parentNode.removeChild(notification);
-                        }
-                    }, 300);
-                }, 5000);
-                
-                // Добавляем CSS анимации
-                if (!document.getElementById('notification-styles')) {
-                    const style = document.createElement('style');
-                    style.id = 'notification-styles';
-                    style.textContent = `
-                        @keyframes slideIn {
-                            from { transform: translateX(100%); opacity: 0; }
-                            to { transform: translateX(0); opacity: 1; }
-                        }
-                        @keyframes slideOut {
-                            from { transform: translateX(0); opacity: 1; }
-                            to { transform: translateX(100%); opacity: 0; }
-                        }
-                    `;
-                    document.head.appendChild(style);
-                }
-            }
-            
-            // Переход к шагу
-            function goToStep(step) {
-                if (step < 1 || step > totalSteps) return;
-                
-                // Обновляем текущий шаг
-                currentStep = step;
-                localStorage.setItem('onboarding_step', step);
-                
-                // Обновляем индикаторы
-                stepIndicators.forEach(indicator => {
-                    const stepNum = parseInt(indicator.dataset.step);
-                    indicator.classList.remove('active');
-                    if (stepNum < step) {
-                        indicator.classList.add('completed');
-                    }
-                    if (stepNum === step) {
-                        indicator.classList.add('active');
-                    }
-                });
-                
-                // Обновляем контент
-                stepContents.forEach(content => {
-                    content.classList.remove('active');
-                });
-                const currentContent = document.getElementById(`step${step}`);
-                if (currentContent) {
-                    currentContent.classList.add('active');
-                    
-                    // Отправляем событие в Яндекс.Метрику
-                    if (typeof ym !== 'undefined') {
-                        ym(105719635, 'reachGoal', `onboarding_step_${step}`);
-                    }
-                }
-            }
-            
-            // Инициализация чекбоксов
-            function initCheckboxes() {
-                checkboxes.forEach(checkbox => {
-                    // Восстанавливаем состояние из localStorage
-                    const checkId = checkbox.dataset.check;
-                    if (localStorage.getItem(`check_${checkId}`) === 'true') {
-                        checkbox.classList.add('checked');
-                    }
-                    
-                    // Обработчик клика
-                    checkbox.addEventListener('click', function() {
-                        this.classList.toggle('checked');
-                        const checkId = this.dataset.check;
-                        localStorage.setItem(`check_${checkId}`, this.classList.contains('checked'));
-                        
-                        // Проверяем, все ли чекбоксы отмечены
-                        checkAllCheckboxes();
-                    });
-                });
-            }
-            
-            // Проверка всех чекбоксов
-            function checkAllCheckboxes() {
-                const allChecked = Array.from(checkboxes).every(cb => cb.classList.contains('checked'));
-                if (allChecked && completeBtn) {
-                    completeBtn.disabled = false;
-                    completeBtn.style.opacity = '1';
-                    
-                    // Помечаем шаг как выполненный
-                    const step4Indicator = document.querySelector('.step-indicator[data-step="4"]');
-                    if (step4Indicator) {
-                        step4Indicator.classList.add('completed');
-                    }
-                }
-            }
-            
-            // Обработчики событий
-            
-            // Кнопка "Вернуться на главную"
-            if (backToMainBtn) {
-                backToMainBtn.addEventListener('click', function() {
-                    showMainContent();
-                    window.location.hash = '';
-                    
-                    if (typeof ym !== 'undefined') {
-                        ym(105719635, 'reachGoal', 'onboarding_returned_to_main');
-                    }
-                });
-            }
-            
-            // Кнопки "Назад"
-            prevButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const prevStep = parseInt(this.dataset.prev);
-                    goToStep(prevStep);
-                });
+            // Открытие модального окна при клике на главную кнопку
+            mainRegisterBtn.addEventListener('click', function() {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                trackEvent('registration_modal_opened');
             });
             
-            // Кнопки "Далее"
-            nextButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const nextStep = parseInt(this.dataset.next);
-                    goToStep(nextStep);
-                });
+            // Закрытие модального окна
+            closeModalBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             });
             
-            // Кнопка завершения
-            if (completeBtn) {
-                completeBtn.addEventListener('click', function() {
-                    // Отправляем событие
-                    if (typeof ym !== 'undefined') {
-                        ym(105719635, 'reachGoal', 'onboarding_completed');
-                    }
-                    
-                    // Показываем сообщение об успехе
-                    alert('🎉 Поздравляем! Вы успешно прошли регистрацию. Теперь можете начинать работать в Яндекс.Такси!');
-                    
-                    // Возвращаемся на главную
-                    showMainContent();
-                    window.location.hash = '';
+            // Закрытие при клике вне окна
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Отслеживание кликов по WhatsApp
+            if (whatsappBtn) {
+                whatsappBtn.addEventListener('click', function() {
+                    trackEvent('whatsapp_clicked');
                 });
             }
             
-            // Инициализация
-            initIncomeCalculator();
-            initCheckboxes();
-            loadYandexForm(); // Инициализируем форму
+            // Кнопки регистрации в других местах
+            document.querySelectorAll('button[onclick*="openYandexForm"]').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    if (this.getAttribute('onclick') === 'openYandexForm()') {
+                        e.preventDefault();
+                        modal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                        trackEvent('registration_button_clicked', 'secondary');
+                    }
+                });
+            });
+        }
+        
+        // Функция открытия формы Яндекс (после модального окна)
+        function openYandexFormFinal() {
+            const modal = document.getElementById('instructionModal');
             
-            // Переходим к сохранённому шагу
-            goToStep(currentStep);
+            // Закрываем модальное окно
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Открываем форму Яндекс
+            window.open(
+                'https://forms.fleet.yandex.ru/forms?specification=taxi&ref_id=018aedd61b874cbbba6e252f6502d71c&iframe=true&lang=ru',
+                '_blank'
+            );
+            
+            // Отправляем событие в аналитику
+            trackEvent('yandex_form_opened');
+            
+            // Показываем уведомление
+            showNotification('Форма открыта! Заполните её и вернитесь на эту страницу.');
+        }
+        
+        // Альтернативная функция для кнопок без модального окна
+        function openYandexForm() {
+            // Открываем форму Яндекс напрямую
+            window.open(
+                'https://forms.fleet.yandex.ru/forms?specification=taxi&ref_id=018aedd61b874cbbba6e252f6502d71c&iframe=true&lang=ru',
+                '_blank'
+            );
+            
+            // Отправляем событие в аналитику
+            trackEvent('yandex_form_opened_direct');
+            
+            // Показываем уведомление
+            showNotification('Форма открыта в новой вкладке! Заполните её.');
         }
         
         // ============================================
-        // 9. TELEGRAM УВЕДОМЛЕНИЯ
+        // 6. УВЕДОМЛЕНИЯ
         // ============================================
         
-        function initTelegramNotifications() {
-            const CONFIG = {
-                TELEGRAM_BOT_TOKEN: '7972335722:AAGRVHFzWSom6sIfz4JxwqPeIMX30cswxyk',
-                TELEGRAM_CHAT_ID: '687385478',
-                ENABLED: true,
-                MIN_TIME_SECONDS: 10,
-                IGNORE_REFRESH: true
-            };
+        function showNotification(message) {
+            // Создаем элемент уведомления
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--yandex-red);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                z-index: 9999;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                animation: slideIn 0.3s ease;
+                max-width: 300px;
+            `;
             
-            if (!CONFIG.ENABLED) return;
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span>${message}</span>
+                </div>
+            `;
             
-            function getTrafficSource() {
-                const referrer = document.referrer;
-                if (!referrer) return 'Прямой заход';
-                
-                if (referrer.includes('google')) return 'Google';
-                if (referrer.includes('yandex')) return 'Яндекс';
-                if (referrer.includes('vk.com')) return 'ВКонтакте';
-                if (referrer.includes('telegram')) return 'Telegram';
-                if (referrer.includes('whatsapp')) return 'WhatsApp';
-                return 'Другой сайт';
-            }
+            document.body.appendChild(notification);
             
-            function sendToTelegram(message) {
-                const url = `https://api.telegram.org/bot${CONFIG.TELEGRAM_BOT_TOKEN}/sendMessage`;
-                const payload = {
-                    chat_id: CONFIG.TELEGRAM_CHAT_ID,
-                    text: message,
-                    parse_mode: 'HTML',
-                    disable_web_page_preview: true
-                };
-                
-                fetch(url, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(payload)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        console.log('✅ Уведомление отправлено в Telegram');
-                        localStorage.setItem('pegasi_last_notif', new Date().toISOString());
+            // Добавляем стили для анимации
+            if (!document.getElementById('notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
                     }
-                })
-                .catch(err => console.error('❌ Ошибка отправки:', err));
+                    @keyframes slideOut {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
             }
             
-            function trackVisitor() {
-                // Пропускаем ботов
-                const userAgent = navigator.userAgent.toLowerCase();
-                if (/bot|crawler|spider/i.test(userAgent)) return;
-                
-                // Проверяем, не было ли недавнего уведомления
-                const lastNotif = localStorage.getItem('pegasi_last_notif');
-                if (CONFIG.IGNORE_REFRESH && lastNotif) {
-                    const lastTime = new Date(lastNotif);
-                    const diffMinutes = (new Date() - lastTime) / (1000 * 60);
-                    if (diffMinutes < 5) return;
-                }
-                
-                // Ждем минимальное время
+            // Удаляем через 5 секунд
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
                 setTimeout(() => {
-                    if (document.hidden) return;
-                    
-                    const info = {
-                        time: new Date().toLocaleString('ru-RU'),
-                        page: window.location.pathname,
-                        source: getTrafficSource(),
-                        device: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? '📱 Мобильный' : '💻 Компьютер',
-                        screen: `${window.screen.width}×${window.screen.height}`,
-                        url: window.location.href,
-                        isOnboarding: window.location.hash === '#onboarding' ? 'Да' : 'Нет'
-                    };
-                    
-                    const message = `
-<b>🚗 Новый посетитель на сайте Таксопарк «Пегас»</b>
-
-⏰ <b>Время:</b> ${info.time}
-📄 <b>Страница:</b> ${info.page === '/' ? 'Главная' : info.page}
-🔗 <b>Источник:</b> ${info.source}
-📱 <b>Устройство:</b> ${info.device}
-🖥 <b>Разрешение:</b> ${info.screen}
-🎯 <b>Мастер:</b> ${info.isOnboarding}
-
-🌐 <a href="${info.url}">${info.url}</a>`;
-                    
-                    sendToTelegram(message);
-                }, CONFIG.MIN_TIME_SECONDS * 1000);
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+        }
+        
+        // ============================================
+        // 7. АНАЛИТИКА И ОТСЛЕЖИВАНИЕ
+        // ============================================
+        
+        function initAnalytics() {
+            // Динамическое обновление статистики (имитация)
+            setTimeout(() => {
+                const driversElement = document.querySelector('.testimonials-grid');
+                if (driversElement) {
+                    // Можно добавить динамическое обновление чисел
+                }
+            }, 3000);
+        }
+        
+        function trackEvent(eventName, eventParams) {
+            // Яндекс.Метрика
+            if (typeof ym !== 'undefined') {
+                ym(105719635, 'reachGoal', eventName);
             }
             
-            // Запускаем при загрузке страницы
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', trackVisitor);
-            } else {
-                trackVisitor();
+            // Google Analytics (если подключен)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', eventName, {
+                    'event_category': 'engagement',
+                    'event_label': eventParams || ''
+                });
             }
+            
+            console.log(`📊 Событие: ${eventName}`, eventParams || '');
         }
+        
+        // ============================================
+        // 8. ДОПОЛНИТЕЛЬНЫЕ УЛУЧШЕНИЯ ДЛЯ UX
+        // ============================================
+        
+        // Отслеживаем видимость кнопок в области просмотра
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Анимируем появление карточек при скролле
+        document.querySelectorAll('.step, .objection-card, .testimonial-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
     </script>
 </body>
-                </html>
+                        </html>
