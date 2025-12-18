@@ -1161,6 +1161,9 @@
                 });
             }
             
+            // ЗАПУСКАЕМ УВЕДОМЛЕНИЯ В TELEGRAM
+            initTelegramNotifications();
+            
             console.log('✅ Сайт готов к работе! Все ссылки исправлены.');
         });
         
@@ -1175,6 +1178,104 @@
             
             // Для отладки
             console.log('📊 Отправлено событие:', eventName);
+            
+            // Отправляем важные события в Telegram
+            if (['registration_modal_opened', 'yandex_form_opened', 'whatsapp_clicked'].includes(eventName)) {
+                sendTelegramAlert(eventName);
+            }
+        }
+        
+        // ============================================
+        // УВЕДОМЛЕНИЯ В TELEGRAM (ВОССТАНОВЛЕНО)
+        // ============================================
+        function initTelegramNotifications() {
+            const CONFIG = {
+                TELEGRAM_BOT_TOKEN: '7972335722:AAGRVHFzWSom6sIfz4JxwqPeIMX30cswxyk',
+                TELEGRAM_CHAT_ID: '687385478',
+                ENABLED: true,
+                MIN_TIME_SECONDS: 5
+            };
+            
+            if (!CONFIG.ENABLED) return;
+            
+            // Пропускаем ботов
+            const userAgent = navigator.userAgent.toLowerCase();
+            if (/bot|crawler|spider/i.test(userAgent)) return;
+            
+            // Ждем минимальное время
+            setTimeout(() => {
+                if (document.hidden) return;
+                
+                const info = {
+                    time: new Date().toLocaleString('ru-RU'),
+                    page: window.location.pathname,
+                    source: getTrafficSource(),
+                    device: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? '📱 Мобильный' : '💻 Компьютер',
+                    screen: `${window.screen.width}×${window.screen.height}`,
+                    url: window.location.href
+                };
+                
+                const message = `
+🚗 <b>Новый посетитель на сайте Таксопарк «Пегас»</b>
+
+⏰ <b>Время:</b> ${info.time}
+📄 <b>Страница:</b> ${info.page === '/' ? 'Главная' : info.page}
+🔗 <b>Источник:</b> ${info.source}
+📱 <b>Устройство:</b> ${info.device}
+🖥 <b>Разрешение:</b> ${info.screen}
+
+🌐 <a href="${info.url}">${info.url}</a>`;
+                
+                sendToTelegram(message);
+            }, CONFIG.MIN_TIME_SECONDS * 1000);
+        }
+        
+        function getTrafficSource() {
+            const referrer = document.referrer;
+            if (!referrer) return 'Прямой заход';
+            
+            if (referrer.includes('google')) return 'Google';
+            if (referrer.includes('yandex')) return 'Яндекс';
+            if (referrer.includes('vk.com')) return 'ВКонтакте';
+            if (referrer.includes('telegram')) return 'Telegram';
+            if (referrer.includes('whatsapp')) return 'WhatsApp';
+            return 'Другой сайт';
+        }
+        
+        function sendToTelegram(message) {
+            const url = `https://api.telegram.org/bot7972335722:AAGRVHFzWSom6sIfz4JxwqPeIMX30cswxyk/sendMessage`;
+            const payload = {
+                chat_id: '687385478',
+                text: message,
+                parse_mode: 'HTML',
+                disable_web_page_preview: true
+            };
+            
+            // Отправляем асинхронно, не блокируя основной поток
+            fetch(url, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    console.log('✅ Уведомление отправлено в Telegram');
+                }
+            })
+            .catch(err => console.error('❌ Ошибка отправки в Telegram:', err));
+        }
+        
+        function sendTelegramAlert(eventName) {
+            const message = `
+🎯 <b>Важное событие на сайте</b>
+
+📊 <b>Тип:</b> ${eventName}
+🌐 <b>Страница:</b> ${window.location.href}
+📱 <b>Устройство:</b> ${/Mobile/.test(navigator.userAgent) ? '📱 Мобильное' : '💻 Компьютер'}
+🕐 <b>Время:</b> ${new Date().toLocaleTimeString('ru-RU')}`;
+            
+            sendToTelegram(message);
         }
         
         // ============================================
@@ -1209,7 +1310,7 @@
         }
         
         // ============================================
-        // ПРОСТЫЕ УВЕДОМЛЕНИЯ
+        // ПРОСТЫЕ УВЕДОМЛЕНИЯ НА САЙТЕ
         // ============================================
         function showNotification(message) {
             const notification = document.createElement('div');
@@ -1243,4 +1344,4 @@
         }
     </script>
 </body>
-</html>
+                            </html>
